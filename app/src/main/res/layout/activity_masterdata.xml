@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_data"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/toolbar" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/activityData_viewPager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="105dp"
+        android:background="@color/colorBackground"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/activityData_bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="50dp"
+        android:background="?android:attr/windowBackground"
+        app:elevation="0dp"
+        app:itemHorizontalTranslationEnabled="true"
+        app:menu="@menu/menu_masterdata" />
+
+    <include layout="@layout/advertising" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

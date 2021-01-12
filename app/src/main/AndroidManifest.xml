@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="de.famprobst.report">
+
+    <!-- Features -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/general_Name"
+        android:resizeableActivity="true"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsPictureInPicture="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".activity.ActivitySplashScreen"
+            android:theme="@style/AppTheme.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.ActivityRifle"
+            android:label="@string/general_Name" />
+
+        <activity
+            android:name=".activity.ActivityMain"
+            android:label="@string/general_Name"
+            android:parentActivityName=".activity.ActivityRifle" />
+
+        <activity
+            android:name=".activity.ActivityDetailsTraining"
+            android:label="@string/general_Name"
+            android:parentActivityName=".activity.ActivityMain"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name=".activity.ActivityDetailsCompetition"
+            android:label="@string/general_Name"
+            android:parentActivityName=".activity.ActivityMain"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name=".activity.ActivityTrainer"
+            android:label="@string/general_Name"
+            android:parentActivityName=".activity.ActivityMain" />
+
+        <activity
+            android:name=".activity.ActivityMasterData"
+            android:label="@string/general_Name"
+            android:parentActivityName=".activity.ActivityMain"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name=".activity.ActivityInformation"
+            android:label="@string/general_Name"
+            android:parentActivityName=".activity.ActivityMain" />
+
+    </application>
+
+</manifest>

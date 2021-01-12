@@ -1,0 +1,192 @@
+<resources>
+
+    <!-- General -->
+    <string name="general_Name">shoot report</string>
+
+    <!-- Preference files -->
+    <string name="preferenceFile_report" translatable="false">preference_report</string>
+    <string name="preferenceReportRifleNumber" translatable="false">preferenceRifleNumber</string>
+    <string name="preferenceReportRifleName" translatable="false">preferenceRifleName</string>
+    <string name="preferenceReportRifleId" translatable="false">preferenceRifleId</string>
+
+    <!-- Navigation -->
+    <string name="navigationTraining">Training</string>
+    <string name="navigationCompetition">Competition</string>
+    <string name="navigationPlan">Procedure</string>
+    <string name="navigationGoals">Goals</string>
+
+    <!-- Menu top -->
+    <string name="topMenuTrainer">Coach</string>
+    <string name="topMenuExport">Exportieren</string>
+    <string name="topMenuData">Master data</string>
+    <string name="topMenuInfo">Information</string>
+    <string name="topMenuDonate">Donate</string>
+
+    <!-- Menu top -->
+    <string name="detailMenuEdit">Edit</string>
+
+    <!-- Menu Trainer -->
+    <string name="trainerMenuEquipment">Equipment</string>
+    <string name="trainerMenuTech">Technical</string>
+    <string name="trainerMenuMental">Mental</string>
+
+    <!-- Menu Data -->
+    <string name="dataMenuPerson">Person</string>
+    <string name="dataMenuDevice">Equipment</string>
+
+    <!-- Activity Rifle -->
+    <string name="activityRifle_DeleteMessage">Are you sure you want to delete this discipline?</string>
+    <string name="activityRifle_DeleteMessageYes">Yes</string>
+    <string name="activityRifle_DeleteMessageNo">No</string>
+
+    <!-- Activity Information -->
+    <string name="activityInformation_Title">Information</string>
+    <string name="activityInformation_SubTitle">Here you can find information about the app.</string>
+
+    <!-- Activity Details -->
+    <string name="activityDetails_AddTraining">Add training</string>
+    <string name="activityDetails_AddCompetition">Add competition</string>
+    <string name="activityDetails_EditTraining">Edit training</string>
+    <string name="activityDetails_EditCompetition">Edit competition</string>
+    <string name="activityDetails_CompetitionInputPlace">Where was your competition?</string>
+    <string name="activityDetails_CompetitionInputKind">In which mode did you shoot?</string>
+    <string name="activityDetails_InputKind">What did you train?</string>
+    <string name="activityDetails_InputPlace">Where did you train?</string>
+    <string name="activityDetails_InputDate">Date</string>
+    <string name="activityDetails_InputReport">Training report</string>
+    <string name="activityDetails_CompetitionInputReport">Competition report</string>
+    <string name="activityDetails_InputPoints1">Series 1</string>
+    <string name="activityDetails_InputPoints2">Series 2</string>
+    <string name="activityDetails_InputPoints3">Series 3</string>
+    <string name="activityDetails_InputPoints4">Series 4</string>
+    <string name="activityDetails_InputPoints5">Series 5</string>
+    <string name="activityDetails_InputPoints6">Series 6</string>
+    <string name="activityDetails_InputPoints7">Series 7</string>
+    <string name="activityDetails_InputPoints8">Series 8</string>
+    <string name="activityDetails_InputPoints9">Series 9</string>
+    <string name="activityDetails_Points">Total rings:</string>
+    <string name="activityDetails_AverageDescription">Average:</string>
+    <string name="activityDetails_Average">%1$s Points</string>
+    <string name="activityDetails_ButtonShare">Share</string>
+    <string name="activityDetails_ButtonPhoto">Photo</string>
+    <string name="activityDetails_ButtonQR">QR code</string>
+    <string name="activityDetails_InputCount">Number of shots</string>
+    <string name="activityDetails_ButtonSave">Save</string>
+    <string name="activityDetails_InfoShare">Here you can share your results in the future.</string>
+    <string name="activityDetails_InfoQR">Here you can scan your result via QR code in the future.</string>
+    <string name="activityDetails_ChooseImageLocation">How do you want to take the photo?</string>
+    <string name="activityDetails_DeleteMessage">Sure to delete the picture?</string>
+    <string name="activityDetails_DeleteMessageYes">Yes</string>
+    <string name="activityDetails_DeleteMessageNo">No</string>
+
+    <!-- Activity Training -->
+    <string name="activityTraining_Title">Coach</string>
+    <string name="activityTraining_TabEquipment">Equipment</string>
+    <string name="activityTraining_TabTechnology">Technical</string>
+    <string name="activityTraining_TabMental">Mental</string>
+
+    <!-- Activity Data -->
+    <string name="activityData_Title">Master data</string>
+
+    <!-- Fragment Training -->
+    <string name="fragmentTraining_TabTraining">Training</string>
+    <string name="fragmentTraining_ListInfoText">It`s time for your first training session!</string>
+    <string name="fragmentTraining_TabStatistics">Statistics</string>
+    <string name="fragmentTraining_Infotext">%1$s, in %2$s</string>
+    <string name="fragmentTraining_DeleteMessage">Are you sure you want to delete the training?</string>
+    <string name="fragmentTraining_DeleteMessageYes">Yes</string>
+    <string name="fragmentTraining_DeleteMessageNo">No</string>
+
+    <!-- Fragment Training Statistics -->
+    <string name="fragmentTrainingStatistics_TitleComplete">\u00D8 Shot whole rings</string>
+    <string name="fragmentTrainingStatistics_TitleHalf">\u00D8 Shot tenth of a ring</string>
+    <string name="fragmentTrainingStatistics_Points">Rings</string>
+
+    <!-- Fragment Competition -->
+    <string name="fragmentCompetition_TabCompetition">Competition</string>
+    <string name="fragmentCompetition_ListInfoText">It`s time for your first competition!</string>
+    <string name="fragmentCompetition_TabStatistics">Statistics</string>
+    <string name="fragmentCompetition_Infotext">%1$s, in %2$s</string>
+    <string name="fragmentCompetition_DeleteMessage">Are you sure you want to delete the competition?</string>
+    <string name="fragmentCompetition_DeleteMessageYes">Yes</string>
+    <string name="fragmentCompetition_DeleteMessageNo">No</string>
+
+    <!-- Fragment Competition Statistics -->
+    <string name="fragmentCompetitionStatistics_TitleComplete">Competition whole rings</string>
+    <string name="fragmentCompetitionStatistics_TitleHalf">Competition tenth of a ring</string>
+    <string name="fragmentCompetitionStatistics_Points">Rings</string>
+    <string name="fragmentCompetitionStatistics_Result">Result</string>
+
+    <!-- Fragment Goals -->
+    <string name="fragmentGoal_TabComplete">Whole rings</string>
+    <string name="fragmentGoal_TabTenth">Tenth of a ring</string>
+    <string name="fragmentGoals_header40">My goals 40 shots</string>
+    <string name="fragmentGoals_header60">My goals 60 shots</string>
+    <string name="fragmentGoals_chaos_title">Chaos</string>
+    <string name="fragmentGoals_chaos_dialog">Chaos</string>
+    <string name="fragmentGoals_minimal_title">Minimal</string>
+    <string name="fragmentGoals_minimal_dialog">Minimal</string>
+    <string name="fragmentGoals_real_title">Real</string>
+    <string name="fragmentGoals_real_dialog">Real</string>
+    <string name="fragmentGoals_optimal_title">Optimal</string>
+    <string name="fragmentGoals_optimal_dialog">Optimal</string>
+    <string name="fragmentGoals_wish_title">Jackpot</string>
+    <string name="fragmentGoals_wish_dialog">Jackpot</string>
+
+    <!-- Fragment Plan -->
+    <string name="fragmentPlan_TabBefore">Preparation</string>
+    <string name="fragmentPlan_TabDuring">Shot sequence</string>
+    <string name="fragmentPlan_header">My procedure before competition</string>
+    <string name="fragmentPlanShoot_header">My procedure for the shot</string>
+    <string name="fragmentPlan_beforeSummary">Here you can define what you can do before the day.</string>
+    <string name="fragmentPlan_beforeText">Preparation</string>
+    <string name="fragmentPlan_duringSummary">Here you can define what you do during the day.</string>
+    <string name="fragmentPlan_duringText">Shot sequence</string>
+
+    <!-- Fragment Person -->
+    <string name="fragmentPerson_Header">Schütze</string>
+    <string name="fragmentPerson_InputName">Name</string>
+    <string name="fragmentPerson_InputAge">Alter</string>
+    <string name="fragmentPerson_InputSize">Größe</string>
+    <string name="fragmentPerson_InputPerformance">Bestenleistung</string>
+    <string name="fragmentPerson_InputAssociation1">1. Verein</string>
+    <string name="fragmentPerson_InputAssociation2">2. Verein</string>
+    <string name="fragmentPerson_InputTrainer">Trainer</string>
+    <string name="fragmentPerson_InputTrainerMail">E-Mail Trainer</string>
+    <string name="fragmentPerson_InputSquad">Kadertrainer</string>
+    <string name="fragmentPerson_InputSquadMail">E-Mail Kadertrainer</string>
+    <string name="fragmentPerson_ButtonSave">Daten speichern</string>
+    <string name="fragmentPerson_SaveSuccessful">Daten erfolgreich gespeichert.</string>
+
+    <!-- Fragment Device -->
+    <string name="fragmentDataDevice_header">My settings on the equipment</string>
+    <string name="fragmentDataDevice_beforeText">All about my equipment</string>
+    <string name="fragmentDataDevice_beforeSummary">Describe all the important details about your equipment.</string>
+
+    <!-- Fragment Information -->
+    <string name="fragmentInformation_TitleAuthor">Information about the author</string>
+    <string name="fragmentInformation_AuthorTitle">Author</string>
+    <string name="fragmentInformation_AuthorValue">Markus Burkhardt and Lars Helmuth Probst</string>
+    <string name="fragmentInformation_WebsiteTitle">Website</string>
+    <string name="fragmentInformation_WebsiteValue" translatable="false">www.burkhardt-sport.solutions</string>
+    <string name="fragmentInformation_TitleVersion">Information about the version</string>
+    <string name="fragmentInformation_VersionTitle">Version</string>
+    <string name="fragmentInformation_VersionValue" translatable="false">0.7 Release</string>
+    <string name="fragmentInformation_BuildTitle" translatable="false">Build</string>
+    <string name="fragmentInformation_BuildValue" translatable="false">20201219</string>
+
+    <!-- Fragment Trainer Equipment -->
+    <string name="fragmentTrainerEquipment_TabCloth">Clothes</string>
+    <string name="fragmentTrainerEquipment_TabSport">Equipment</string>
+    <string name="fragmentTrainerEquipment_TabEquipment">Accessories</string>
+
+    <!-- Fragment Trainer Tech -->
+    <string name="fragmentTrainerTech_TabAttack">Attack</string>
+    <string name="fragmentTrainerTech_TabDestination">Procedure</string>
+
+    <!-- Fragment Trainer Mental -->
+    <string name="fragmentTrainerMental_TabRelax">Rest</string>
+    <string name="fragmentTrainerMental_TabMotivation">Motivation</string>
+    <string name="fragmentTrainerMental_TabFocus">Focus</string>
+
+</resources>

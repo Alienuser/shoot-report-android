@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="activityDetails_InputKindPossibilities">
+        <item>Einrichten</item>
+        <item>Anschlagsaufbau</item>
+        <item>Nullpunkt</item>
+        <item>Atmung</item>
+        <item>Zielen</item>
+        <item>Abziehen/ Druckverlauf</item>
+        <item>Koordination</item>
+        <item>Phasentraining</item>
+        <item>Linksanschläge</item>
+        <item>Leistungstraining</item>
+        <item>Wettkampftraining</item>
+        <item>Finaltraining</item>
+        <item>Sonstiges</item>
+    </string-array>
+
+    <string-array name="activityCompetition_InputKindPossibilities">
+        <item>Ligawettkampf</item>
+        <item>Rundenwettkampf</item>
+        <item>Meisterschaft</item>
+        <item>Kontrollwettkampf</item>
+        <item>Sonstiges</item>
+    </string-array>
+
+</resources>

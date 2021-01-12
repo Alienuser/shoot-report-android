@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/fragmentPlan_header">
+
+        <EditTextPreference
+            android:dialogMessage="@string/fragmentPlan_beforeSummary"
+            android:dialogTitle="@string/fragmentPlan_beforeText"
+            android:key="pref_plan_before"
+            android:title="@string/fragmentPlan_beforeText"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

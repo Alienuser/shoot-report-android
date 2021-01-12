@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Base -->
+    <style name="AppTheme.Base" parent="Theme.MaterialComponents.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- General -->
+    <style name="AppTheme" parent="AppTheme.Base" />
+
+    <!-- SplashScreen -->
+    <style name="AppTheme.SplashScreen" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@drawable/splashscreen</item>
+    </style>
+
+</resources>

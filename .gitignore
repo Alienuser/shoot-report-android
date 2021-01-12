@@ -1,0 +1,9 @@
+# IntelliJ
+*.iml
+.idea
+
+# Android
+.gradle
+gradle
+build
+app/build

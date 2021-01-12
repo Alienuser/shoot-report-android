@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/fragmentGoals_header40">
+
+        <EditTextPreference
+            android:dialogTitle="@string/fragmentGoals_wish_dialog"
+            android:icon="@drawable/ic_goal_arrow"
+            android:key="pref_goal_tenth40_wish"
+            android:title="@string/fragmentGoals_wish_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/fragmentGoals_optimal_dialog"
+            android:icon="@drawable/ic_goal_optimal"
+            android:key="pref_goal_tenth40_optimal"
+            android:title="@string/fragmentGoals_optimal_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/fragmentGoals_real_dialog"
+            android:icon="@drawable/ic_goal_real"
+            android:key="pref_goal_tenth40_real"
+            android:title="@string/fragmentGoals_real_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/fragmentGoals_minimal_dialog"
+            android:icon="@drawable/ic_goal_minimal"
+            android:key="pref_goal_tenth40_minimal"
+            android:title="@string/fragmentGoals_minimal_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/fragmentGoals_chaos_title"
+            android:icon="@drawable/ic_goal_chaos"
+            android:key="pref_goal_tenth40_chaos"
+            android:title="@string/fragmentGoals_chaos_dialog"
+            app:allowDividerBelow="true"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/fragmentGoals_header60">
+
+        <EditTextPreference
+            android:dialogTitle="@string/fragmentGoals_wish_dialog"
+            android:icon="@drawable/ic_goal_arrow"
+            android:key="pref_goal_tenth60_wish"
+            android:title="@string/fragmentGoals_wish_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/fragmentGoals_optimal_dialog"
+            android:icon="@drawable/ic_goal_optimal"
+            android:key="pref_goal_tenth60_optimal"
+            android:title="@string/fragmentGoals_optimal_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/fragmentGoals_real_dialog"
+            android:icon="@drawable/ic_goal_real"
+            android:key="pref_goal_tenth60_real"
+            android:title="@string/fragmentGoals_real_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/fragmentGoals_minimal_dialog"
+            android:icon="@drawable/ic_goal_minimal"
+            android:key="pref_goal_tenth60_minimal"
+            android:title="@string/fragmentGoals_minimal_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/fragmentGoals_chaos_title"
+            android:icon="@drawable/ic_goal_chaos"
+            android:key="pref_goal_tenth60_chaos"
+            android:title="@string/fragmentGoals_chaos_dialog"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

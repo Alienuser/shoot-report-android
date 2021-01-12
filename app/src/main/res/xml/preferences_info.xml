@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/fragmentInformation_TitleAuthor">
+
+        <Preference
+            android:summary="@string/fragmentInformation_AuthorValue"
+            android:title="@string/fragmentInformation_AuthorTitle" />
+
+        <Preference
+            android:summary="@string/fragmentInformation_WebsiteValue"
+            android:title="@string/fragmentInformation_WebsiteTitle"
+            app:allowDividerAbove="true">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.burkhardt-sport.solutions" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/fragmentInformation_TitleVersion">
+
+        <Preference
+            android:summary="@string/fragmentInformation_VersionValue"
+            android:title="@string/fragmentInformation_VersionTitle" />
+
+        <Preference
+            android:summary="@string/fragmentInformation_BuildValue"
+            android:title="@string/fragmentInformation_BuildTitle"
+            app:allowDividerAbove="true" />
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

@@ -1,0 +1,32 @@
+body {
+    background-color: #FAFAFA;
+}
+
+h1 {
+    color: #0E2435;
+    display: inline;
+}
+
+h3 {
+    color: #0AE20A;
+}
+
+hr {
+    border: 1px solid #0E2435;
+}
+
+button {
+    padding: 10px;
+    background-color: #0AE20A;
+    color: white;
+    border: none;
+}
+
+.info {
+    background-color: #E0E0E0;
+    padding: 10px;
+}
+
+.tip {
+    padding: 12px;
+}

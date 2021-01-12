@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="horizontal"
+    android:padding="6dip">
+
+    <ImageView
+        android:id="@+id/rowRifle_Icon"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_margin="8dip"
+        android:layout_weight="1"
+        android:src="@drawable/ic_gun" />
+
+    <TextView
+        android:id="@+id/rowRifle_Name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="8dip"
+        android:layout_weight="9"
+        android:gravity="center_vertical"
+        android:textSize="17sp" />
+
+    <ImageView
+        android:id="@+id/rowRifle_Delete"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_delete" />
+
+</LinearLayout>

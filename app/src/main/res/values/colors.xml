@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- General -->
+    <color name="colorPrimary">#1B344C</color>
+    <color name="colorPrimaryDark">#0E2435</color>
+    <color name="colorAccent">#0AE20A</color>
+    <color name="colorBackground">#FAFAFA</color>
+
+    <!-- Trainer -->
+    <color name="colorTrainerGrey">#E0E0E0</color>
+
+</resources>

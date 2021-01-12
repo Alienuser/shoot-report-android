@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/fragmentDataDevice_header">
+
+        <EditTextPreference
+            android:dialogMessage="@string/fragmentDataDevice_beforeSummary"
+            android:dialogTitle="@string/fragmentDataDevice_beforeText"
+            android:key="pref_data_device"
+            android:title="@string/fragmentDataDevice_beforeText"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

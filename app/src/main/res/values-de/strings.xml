@@ -1,0 +1,182 @@
+<resources>
+
+    <!-- General -->
+    <string name="general_Name">shoot report</string>
+
+    <!-- Navigation -->
+    <string name="navigationTraining">Training</string>
+    <string name="navigationCompetition">Wettkampf</string>
+    <string name="navigationPlan">Ablauf</string>
+    <string name="navigationGoals">Ziele</string>
+
+    <!-- Menu top -->
+    <string name="topMenuTrainer">Trainer</string>
+    <string name="topMenuExport">Exportieren</string>
+    <string name="topMenuData">Stammdaten</string>
+    <string name="topMenuInfo">Informationen</string>
+    <string name="topMenuDonate">Spenden</string>
+
+    <!-- Menu top -->
+    <string name="detailMenuEdit">Editieren</string>
+
+    <!-- Menu Trainer -->
+    <string name="trainerMenuEquipment">Ausrüstung</string>
+    <string name="trainerMenuTech">Technik</string>
+    <string name="trainerMenuMental">Mental</string>
+
+    <!-- Menu Data -->
+    <string name="dataMenuPerson">Person</string>
+    <string name="dataMenuDevice">Sportgerät</string>
+
+    <!-- Activity Rifle -->
+    <string name="activityRifle_DeleteMessage">Willst du diese Disziplin wirklich löschen?</string>
+    <string name="activityRifle_DeleteMessageYes">Ja</string>
+    <string name="activityRifle_DeleteMessageNo">Nein</string>
+
+    <!-- Activity Information -->
+    <string name="activityInformation_Title">Informationen</string>
+    <string name="activityInformation_SubTitle">Hier findest du Informationen zur App</string>
+
+    <!-- Activity Details -->
+    <string name="activityDetails_AddTraining">Training hinzufügen</string>
+    <string name="activityDetails_AddCompetition">Wettkampf hinzufügen</string>
+    <string name="activityDetails_EditTraining">Training bearbeiten</string>
+    <string name="activityDetails_EditCompetition">Wettkampf bearbeiten</string>
+    <string name="activityDetails_CompetitionInputPlace">Wo war dein Wettkampf?</string>
+    <string name="activityDetails_CompetitionInputKind">Welchen Modus hast du geschossen?</string>
+    <string name="activityDetails_InputKind">Was hast du trainiert?</string>
+    <string name="activityDetails_InputPlace">Wo hast du trainiert?</string>
+    <string name="activityDetails_InputDate">Datum</string>
+    <string name="activityDetails_InputReport">Trainingsbericht</string>
+    <string name="activityDetails_CompetitionInputReport">Wettkampfbericht</string>
+    <string name="activityDetails_InputPoints1">Serie 1</string>
+    <string name="activityDetails_InputPoints2">Serie 2</string>
+    <string name="activityDetails_InputPoints3">Serie 3</string>
+    <string name="activityDetails_InputPoints4">Serie 4</string>
+    <string name="activityDetails_InputPoints5">Serie 5</string>
+    <string name="activityDetails_InputPoints6">Serie 6</string>
+    <string name="activityDetails_InputPoints7">Serie 7</string>
+    <string name="activityDetails_InputPoints8">Serie 8</string>
+    <string name="activityDetails_InputPoints9">Serie 9</string>
+    <string name="activityDetails_Points">Gesamtringzahl:</string>
+    <string name="activityDetails_AverageDescription">Durchschnitt:</string>
+    <string name="activityDetails_Average">%1$s Punkte</string>
+    <string name="activityDetails_ButtonShare">Share</string>
+    <string name="activityDetails_ButtonPhoto">Foto</string>
+    <string name="activityDetails_ButtonQR">QR-Code</string>
+    <string name="activityDetails_InputCount">Anzahl Schüsse</string>
+    <string name="activityDetails_ButtonSave">Speichern</string>
+    <string name="activityDetails_InfoShare">Hier kannst du in Zukunft dein Ergebnis teilen.</string>
+    <string name="activityDetails_InfoQR">Hier kannst du in Zukunft dein Ergebnis über QR-Code scannen.</string>
+    <string name="activityDetails_ChooseImageLocation">Wie möchtest du das Bild aufnehmen?</string>
+    <string name="activityDetails_DeleteMessage">Möchtest du das Bild wirklich löschen?</string>
+    <string name="activityDetails_DeleteMessageYes">Ja</string>
+    <string name="activityDetails_DeleteMessageNo">Nein</string>
+
+    <!-- Activity Training -->
+    <string name="activityTraining_Title">Trainer</string>
+    <string name="activityTraining_TabEquipment">Ausrüstung</string>
+    <string name="activityTraining_TabTechnology">Technik</string>
+    <string name="activityTraining_TabMental">Mental</string>
+
+    <!-- Activity Data -->
+    <string name="activityData_Title">Stammdaten</string>
+
+    <!-- Fragment Training -->
+    <string name="fragmentTraining_TabTraining">Training</string>
+    <string name="fragmentTraining_ListInfoText">Es wird Zeit für dein erstes Training!</string>
+    <string name="fragmentTraining_TabStatistics">Statistiken</string>
+    <string name="fragmentTraining_Infotext">%1$s, in %2$s</string>
+    <string name="fragmentTraining_DeleteMessage">Möchtest du das Training wirklich löschen?</string>
+    <string name="fragmentTraining_DeleteMessageYes">Ja</string>
+    <string name="fragmentTraining_DeleteMessageNo">Nein</string>
+
+    <!-- Fragment Training Statistics -->
+    <string name="fragmentTrainingStatistics_TitleComplete">\u00D8 Schuss ganze Ringe</string>
+    <string name="fragmentTrainingStatistics_TitleHalf">\u00D8 Schuss zehntel Ringe</string>
+    <string name="fragmentTrainingStatistics_Points">Ringe</string>
+
+    <!-- Fragment Competition -->
+    <string name="fragmentCompetition_TabCompetition">Wettkampf</string>
+    <string name="fragmentCompetition_ListInfoText">Es wird Zeit für deinen ersten Wettkampf!</string>
+    <string name="fragmentCompetition_TabStatistics">Statistiken</string>
+    <string name="fragmentCompetition_Infotext">%1$s, in %2$s</string>
+    <string name="fragmentCompetition_DeleteMessage">Möchtest du den Wettkampf wirklich löschen?</string>
+    <string name="fragmentCompetition_DeleteMessageYes">Ja</string>
+    <string name="fragmentCompetition_DeleteMessageNo">Nein</string>
+
+    <!-- Fragment Competition Statistics -->
+    <string name="fragmentCompetitionStatistics_TitleComplete">Wettkampf ganze Ringe</string>
+    <string name="fragmentCompetitionStatistics_TitleHalf">Wettkampf zehntel Ringe</string>
+    <string name="fragmentCompetitionStatistics_Points">Ringe</string>
+    <string name="fragmentCompetitionStatistics_Result">Ergebnis</string>
+
+    <!-- Fragment Goals -->
+    <string name="fragmentGoal_TabComplete">Ganze Ringe</string>
+    <string name="fragmentGoal_TabTenth">Zehntel Ringe</string>
+    <string name="fragmentGoals_header40">Meine Ziele 40 Schuss</string>
+    <string name="fragmentGoals_header60">Meine Ziele 60 Schuss</string>
+    <string name="fragmentGoals_chaos_title">Chaos</string>
+    <string name="fragmentGoals_chaos_dialog">Chaos</string>
+    <string name="fragmentGoals_minimal_title">Minimal</string>
+    <string name="fragmentGoals_minimal_dialog">Minimal</string>
+    <string name="fragmentGoals_real_title">Real</string>
+    <string name="fragmentGoals_real_dialog">Real</string>
+    <string name="fragmentGoals_optimal_title">Optimal</string>
+    <string name="fragmentGoals_optimal_dialog">Optimal</string>
+    <string name="fragmentGoals_wish_title">Jackpot</string>
+    <string name="fragmentGoals_wish_dialog">Jackpot</string>
+
+    <!-- Fragment Plan -->
+    <string name="fragmentPlan_TabBefore">Vorbereitung</string>
+    <string name="fragmentPlan_TabDuring">Schussablauf</string>
+    <string name="fragmentPlan_header">Mein Ablauf vor dem Wettkampf</string>
+    <string name="fragmentPlanShoot_header">Mein Ablauf für den Schuss</string>
+    <string name="fragmentPlan_beforeSummary">Hier kannst du definieren, was du vor dem Tag machst.</string>
+    <string name="fragmentPlan_beforeText">Vorbereitung</string>
+    <string name="fragmentPlan_duringSummary">Hier kannst du definieren, was du während dem Tag machst.</string>
+    <string name="fragmentPlan_duringText">Schussablauf</string>
+
+    <!-- Fragment Person -->
+    <string name="fragmentPerson_Header">Schütze</string>
+    <string name="fragmentPerson_InputName">Name</string>
+    <string name="fragmentPerson_InputAge">Alter</string>
+    <string name="fragmentPerson_InputSize">Größe</string>
+    <string name="fragmentPerson_InputPerformance">Bestenleistung</string>
+    <string name="fragmentPerson_InputAssociation1">1. Verein</string>
+    <string name="fragmentPerson_InputAssociation2">2. Verein</string>
+    <string name="fragmentPerson_InputTrainer">Trainer</string>
+    <string name="fragmentPerson_InputTrainerMail">E-Mail Trainer</string>
+    <string name="fragmentPerson_InputSquad">Kadertrainer</string>
+    <string name="fragmentPerson_InputSquadMail">E-Mail Kadertrainer</string>
+    <string name="fragmentPerson_ButtonSave">Daten speichern</string>
+    <string name="fragmentPerson_SaveSuccessful">Daten erfolgreich gespeichert.</string>
+
+    <!-- Fragment Device -->
+    <string name="fragmentDataDevice_header">Meine Einstellungen am Sportgerät</string>
+    <string name="fragmentDataDevice_beforeText">Alles zu meinem Sportgerät</string>
+    <string name="fragmentDataDevice_beforeSummary">Beschreibe alle wichtigen Details zu deinem Sportgerät.</string>
+
+    <!-- Fragment Information -->
+    <string name="fragmentInformation_TitleAuthor">Informationen über den Autor</string>
+    <string name="fragmentInformation_AuthorTitle">Autor</string>
+    <string name="fragmentInformation_AuthorValue">Markus Burkhardt und Lars Helmuth Probst</string>
+    <string name="fragmentInformation_WebsiteTitle">Webseite</string>
+    <string name="fragmentInformation_TitleVersion">Informationen über die Version</string>
+    <string name="fragmentInformation_VersionTitle">Version</string>
+
+    <!-- Fragment Trainer Equipment -->
+    <string name="fragmentTrainerEquipment_TabCloth">Kleidung</string>
+    <string name="fragmentTrainerEquipment_TabSport">Sportgerät</string>
+    <string name="fragmentTrainerEquipment_TabEquipment">Zubehör</string>
+
+    <!-- Fragment Trainer Tech -->
+    <string name="fragmentTrainerTech_TabAttack">Anschlag</string>
+    <string name="fragmentTrainerTech_TabDestination">Ablauf</string>
+
+    <!-- Fragment Trainer Mental -->
+    <string name="fragmentTrainerMental_TabRelax">Ruhe</string>
+    <string name="fragmentTrainerMental_TabMotivation">Motivation</string>
+    <string name="fragmentTrainerMental_TabFocus">Fokus</string>
+
+</resources>

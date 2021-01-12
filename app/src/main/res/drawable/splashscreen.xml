@@ -1,0 +1,11 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/colorPrimary" />
+
+    <item
+        android:width="290dp"
+        android:height="581dp"
+        android:drawable="@drawable/ic_splashscreen"
+        android:gravity="center" />
+
+</layer-list>

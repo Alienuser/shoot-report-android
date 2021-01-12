@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_person"
+        android:icon="@drawable/ic_person"
+        android:title="@string/dataMenuPerson" />
+    <item
+        android:id="@+id/menu_device"
+        android:icon="@drawable/ic_device"
+        android:title="@string/dataMenuDevice" />
+</menu>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="horizontal"
+    android:padding="6dip">
+
+    <TextView
+        android:id="@+id/rowCompetition_Points"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="16dip"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="8dip"
+        android:layout_weight="8"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/rowCompetition_Kind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/rowCompetition_Info"
+            android:layout_width="match_parent"
+            android:layout_height="26dip"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/rowCompetition_Delete"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_delete" />
+
+</LinearLayout>
