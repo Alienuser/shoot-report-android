@@ -64,48 +64,43 @@ class FragmentCompetitionStatistics : Fragment() {
             // Empty the arrays
             chartSeriesComplete = emptyArray()
             chartSeriesHalf = emptyArray()
-            chartSeriesHalf = emptyArray()
             chartCategoriesComplete = emptyArray()
+            chartCategoriesHalf = emptyArray()
 
-            // Fill the complete and half array
-            var i = 1
-            while (chartCategoriesComplete.size < 10 && competitions.isNotEmpty()) {
-                if (competitions[competitions.size - i].shoots.sum().rem(1).equals(0.0)) {
+            // Fill the complete array
+            var i = 0
+
+            while (chartCategoriesComplete.size < 10 && competitions.isNotEmpty() && i < competitions.size) {
+                if (competitions[i].shoots.sum().rem(1).equals(0.0)) {
                     // Calculate the right points
-                    chartSeriesComplete += competitions[competitions.size - i].shoots.sum()
+                    chartSeriesComplete += competitions[i].shoots.sum()
 
                     // Add data to categories
                     chartCategoriesComplete += SimpleDateFormat(
                         "dd. MMM",
                         Locale.getDefault()
-                    ).format(competitions[competitions.size - i].date)
+                    ).format(competitions[i].date)
                 }
 
-                if (i >= competitions.size) {
-                    break
-                } else {
-                    i++
-                }
+                i++
             }
 
-            i = 1
-            while (chartCategoriesHalf.size < 10 && competitions.isNotEmpty()) {
-                if (!competitions[competitions.size - i].shoots.sum().rem(1).equals(0.0)) {
+            // Fill the half array
+            i = 0
+
+            while (chartCategoriesHalf.size < 10 && competitions.isNotEmpty() && i < competitions.size) {
+                if (!competitions[i].shoots.sum().rem(1).equals(0.0)) {
                     // Calculate the right points
-                    chartSeriesHalf += floor(competitions[competitions.size - i].shoots.sum() * 100) / 100.0
+                    chartSeriesHalf += floor(competitions[i].shoots.sum() * 100) / 100.0
 
                     // Add data to categories
                     chartCategoriesHalf += SimpleDateFormat(
                         "dd. MMM",
                         Locale.getDefault()
-                    ).format(competitions[competitions.size - i].date)
+                    ).format(competitions[i].date)
                 }
 
-                if (i >= competitions.size) {
-                    break
-                } else {
-                    i++
-                }
+                i++
             }
 
             // Set the chart
@@ -122,13 +117,13 @@ class FragmentCompetitionStatistics : Fragment() {
             .backgroundColor("#FAFAFA")
             .yAxisTitle(getString(R.string.fragmentCompetitionStatistics_Points))
             .colorsTheme(arrayOf("#0AE20A"))
-            .categories(chartCategoriesComplete)
+            .categories(chartCategoriesComplete.reversedArray())
             .series(
                 arrayOf(
                     AASeriesElement()
                         .showInLegend(false)
                         .name(getString(R.string.fragmentCompetitionStatistics_Result))
-                        .data(chartSeriesComplete)
+                        .data(chartSeriesComplete.reversedArray())
                 )
             )
 
@@ -140,13 +135,13 @@ class FragmentCompetitionStatistics : Fragment() {
             .backgroundColor("#FAFAFA")
             .yAxisTitle(getString(R.string.fragmentCompetitionStatistics_Points))
             .colorsTheme(arrayOf("#0E2435"))
-            .categories(chartCategoriesHalf)
+            .categories(chartCategoriesHalf.reversedArray())
             .series(
                 arrayOf(
                     AASeriesElement()
                         .showInLegend(false)
                         .name(getString(R.string.fragmentCompetitionStatistics_Result))
-                        .data(chartSeriesHalf)
+                        .data(chartSeriesHalf.reversedArray())
                 )
             )
 

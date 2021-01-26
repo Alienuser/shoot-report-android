@@ -1,5 +1,6 @@
 package de.famprobst.report.activity
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
@@ -16,6 +17,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -32,7 +34,6 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickListener {
 
@@ -286,6 +287,7 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
         spinner.onItemClickListener = this
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupDatePicker() {
         val cal = Calendar.getInstance()
         val dateSetListener =
@@ -305,13 +307,16 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
                 )
             }
 
-        findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText?.setOnClickListener {
-            DatePickerDialog(
-                this, dateSetListener,
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)
-            ).show()
+        findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText?.setOnTouchListener { p0, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                DatePickerDialog(
+                    p0.context, dateSetListener,
+                    cal.get(Calendar.YEAR),
+                    cal.get(Calendar.MONTH),
+                    cal.get(Calendar.DAY_OF_MONTH)
+                ).show()
+            }
+            true
         }
     }
 
@@ -649,38 +654,69 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
     }
 
     private fun calculatePoints() {
-        var points = 0.0
+        val points: MutableList<Double> = mutableListOf()
 
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.text.isNullOrEmpty()) points += findViewById<TextInputLayout>(
-            R.id.activityDetails_InputPoints1
-        ).editText?.text.toString().toDouble()
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.text.isNullOrEmpty()) points += findViewById<TextInputLayout>(
-            R.id.activityDetails_InputPoints2
-        ).editText?.text.toString().toDouble()
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.text.isNullOrEmpty()) points += findViewById<TextInputLayout>(
-            R.id.activityDetails_InputPoints3
-        ).editText?.text.toString().toDouble()
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.text.isNullOrEmpty()) points += findViewById<TextInputLayout>(
-            R.id.activityDetails_InputPoints4
-        ).editText?.text.toString().toDouble()
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.text.isNullOrEmpty()) points += findViewById<TextInputLayout>(
-            R.id.activityDetails_InputPoints5
-        ).editText?.text.toString().toDouble()
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.text.isNullOrEmpty()) points += findViewById<TextInputLayout>(
-            R.id.activityDetails_InputPoints6
-        ).editText?.text.toString().toDouble()
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints7).editText?.text.isNullOrEmpty()) points += findViewById<TextInputLayout>(
-            R.id.activityDetails_InputPoints7
-        ).editText?.text.toString().toDouble()
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints8).editText?.text.isNullOrEmpty()) points += findViewById<TextInputLayout>(
-            R.id.activityDetails_InputPoints8
-        ).editText?.text.toString().toDouble()
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints9).editText?.text.isNullOrEmpty()) points += findViewById<TextInputLayout>(
-            R.id.activityDetails_InputPoints9
-        ).editText?.text.toString().toDouble()
+        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.text.isNullOrEmpty()) {
+            points.add(
+                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.text.toString()
+                    .toDouble()
+            )
+        }
+        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.text.isNullOrEmpty()) {
+            points.add(
+                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.text.toString()
+                    .toDouble()
+            )
+        }
+        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.text.isNullOrEmpty()) {
+            points.add(
+                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.text.toString()
+                    .toDouble()
+            )
+        }
+        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.text.isNullOrEmpty()) {
+            points.add(
+                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.text.toString()
+                    .toDouble()
+            )
+        }
+        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.text.isNullOrEmpty()) {
+            points.add(
+                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.text.toString()
+                    .toDouble()
+            )
+        }
+        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.text.isNullOrEmpty()) {
+            points.add(
+                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.text.toString()
+                    .toDouble()
+            )
+        }
+        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints7).editText?.text.isNullOrEmpty()) {
+            points.add(
+                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints7).editText?.text.toString()
+                    .toDouble()
+            )
+        }
+        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints8).editText?.text.isNullOrEmpty()) {
+            points.add(
+                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints8).editText?.text.toString()
+                    .toDouble()
+            )
+        }
+        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints9).editText?.text.isNullOrEmpty()) {
+            points.add(
+                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints9).editText?.text.toString()
+                    .toDouble()
+            )
+        }
 
         // Set value
-        findViewById<TextView>(R.id.activityDetails_Points).text = "%.1f".format(points)
+        if (points.sum().rem(1).equals(0.0)) {
+            findViewById<TextView>(R.id.activityDetails_Points).text = "%.0f".format(points.sum())
+        } else {
+            findViewById<TextView>(R.id.activityDetails_Points).text = "%.1f".format(points.sum())
+        }
 
         if (!findViewById<TextInputLayout>(R.id.activityDetails_InputCount).editText?.text.isNullOrEmpty() && !findViewById<TextInputLayout>(
                 R.id.activityDetails_InputCount
@@ -689,7 +725,7 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
             findViewById<TextView>(R.id.activityDetails_Average).text = getString(
                 R.string.activityDetails_Average,
                 "%.2f".format(
-                    (points / findViewById<TextInputLayout>(R.id.activityDetails_InputCount).editText?.text.toString()
+                    (points.sum() / findViewById<TextInputLayout>(R.id.activityDetails_InputCount).editText?.text.toString()
                         .toDouble() * 100) / 100.0
                 )
             )

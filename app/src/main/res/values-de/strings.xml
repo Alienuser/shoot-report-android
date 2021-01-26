@@ -15,6 +15,7 @@
     <string name="topMenuData">Stammdaten</string>
     <string name="topMenuInfo">Informationen</string>
     <string name="topMenuDonate">Spenden</string>
+    <string name="topMenuPartner">Partner</string>
 
     <!-- Menu top -->
     <string name="detailMenuEdit">Editieren</string>
@@ -36,6 +37,12 @@
     <!-- Activity Information -->
     <string name="activityInformation_Title">Informationen</string>
     <string name="activityInformation_SubTitle">Hier findest du Informationen zur App</string>
+
+    <!-- Activity Partner -->
+    <string name="activityPartner_Title">Unsere Partner</string>
+    <string name="activityPartner_Headline">Wir sagen DANKE!</string>
+    <string name="activityPartner_Info">Werden Sie jetzt Partner von uns.</string>
+    <string name="activityPartner_Button">Kontakt</string>
 
     <!-- Activity Details -->
     <string name="activityDetails_AddTraining">Training hinzufügen</string>

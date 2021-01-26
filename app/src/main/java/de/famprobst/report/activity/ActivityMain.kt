@@ -17,7 +17,7 @@ import de.famprobst.report.R
 import de.famprobst.report.adapter.AdapterTabs
 import de.famprobst.report.fragment.competition.FragmentCompetition
 import de.famprobst.report.fragment.goals.FragmentGoals
-import de.famprobst.report.fragment.plan.FragmentPlan
+import de.famprobst.report.fragment.procedure.FragmentProcedure
 import de.famprobst.report.fragment.training.FragmentTraining
 import de.famprobst.report.helper.HelperRepeat
 import de.famprobst.report.model.ModelCompetition
@@ -82,16 +82,16 @@ class ActivityMain : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {
+            R.id.topMenuData -> {
+                startActivity(Intent(this, ActivityMasterData::class.java))
+                true
+            }
             R.id.topMenuTrainer -> {
                 startActivity(Intent(this, ActivityTrainer::class.java))
                 true
             }
             R.id.topMenuExport -> {
                 exportDataToCSV()
-                true
-            }
-            R.id.topMenuData -> {
-                startActivity(Intent(this, ActivityMasterData::class.java))
                 true
             }
             R.id.topMenuInfo -> {
@@ -107,6 +107,10 @@ class ActivityMain : AppCompatActivity() {
                 )
                 true
             }
+            R.id.topMenuPartner -> {
+                startActivity(Intent(this, ActivityPartner::class.java))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -115,7 +119,7 @@ class ActivityMain : AppCompatActivity() {
         val adapter = AdapterTabs(supportFragmentManager)
         adapter.addFragment(FragmentTraining())
         adapter.addFragment(FragmentCompetition())
-        adapter.addFragment(FragmentPlan())
+        adapter.addFragment(FragmentProcedure())
         adapter.addFragment(FragmentGoals())
         viewPager.adapter = adapter
 

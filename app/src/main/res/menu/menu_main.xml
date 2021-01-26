@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/menu_training"
         android:icon="@drawable/ic_training"
         android:title="@string/navigationTraining" />
+
     <item
         android:id="@+id/menu_competition"
         android:icon="@drawable/ic_competition"
         android:title="@string/navigationCompetition" />
+
     <item
         android:id="@+id/menu_plan"
         android:icon="@drawable/ic_plan"
         android:title="@string/navigationPlan" />
+
     <item
         android:id="@+id/menu_goals"
         android:icon="@drawable/ic_goal"
         android:title="@string/navigationGoals" />
+
 </menu>

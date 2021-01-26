@@ -8,9 +8,9 @@
 
     <include layout="@layout/toolbar" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/activityMain_fragment"
-        class="de.famprobst.report.fragment.FragmentInformation"
+        android:name="de.famprobst.report.fragment.FragmentInformation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />

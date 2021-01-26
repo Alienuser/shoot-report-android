@@ -17,10 +17,11 @@
 
     <!-- Menu top -->
     <string name="topMenuTrainer">Coach</string>
-    <string name="topMenuExport">Exportieren</string>
+    <string name="topMenuExport">Export</string>
     <string name="topMenuData">Master data</string>
     <string name="topMenuInfo">Information</string>
     <string name="topMenuDonate">Donate</string>
+    <string name="topMenuPartner">Partner</string>
 
     <!-- Menu top -->
     <string name="detailMenuEdit">Edit</string>
@@ -42,6 +43,12 @@
     <!-- Activity Information -->
     <string name="activityInformation_Title">Information</string>
     <string name="activityInformation_SubTitle">Here you can find information about the app.</string>
+
+    <!-- Activity Partner -->
+    <string name="activityPartner_Title">Partner</string>
+    <string name="activityPartner_Headline">Wir sagen DANKE!</string>
+    <string name="activityPartner_Info">Werden Sie jetzt Partner von uns.</string>
+    <string name="activityPartner_Button">Contact</string>
 
     <!-- Activity Details -->
     <string name="activityDetails_AddTraining">Add training</string>

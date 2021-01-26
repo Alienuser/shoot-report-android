@@ -45,7 +45,6 @@ class AdapterTraining(
 
         // Define all texts boxes
         private val points: TextView = itemsView.findViewById(R.id.rowTraining_Points)
-        private val mood: ImageView = itemsView.findViewById(R.id.rowTraining_Mood)
         private val training: TextView = itemsView.findViewById(R.id.rowTraining_Training)
         private val info: TextView = itemsView.findViewById(R.id.rowTraining_Info)
         private val delete: ImageView = itemsView.findViewById(R.id.rowTraining_Delete)
@@ -68,20 +67,40 @@ class AdapterTraining(
             // Set the color of the points according to the indicator
             when (training.indicator) {
                 0 -> {
-                    this.mood.setImageResource(R.drawable.ic_mood_bad)
-                    this.mood.setColorFilter(Color.RED)
+                    this.points.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_mood_bad,
+                        0,
+                        0,
+                        0
+                    )
+                    this.points.compoundDrawablesRelative[0].setTint(Color.RED)
                 }
                 1 -> {
-                    this.mood.setImageResource(R.drawable.ic_mood_dissatisfied)
-                    this.mood.setColorFilter(Color.RED)
+                    this.points.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_mood_dissatisfied,
+                        0,
+                        0,
+                        0
+                    )
+                    this.points.compoundDrawablesRelative[0].setTint(Color.RED)
                 }
                 2 -> {
-                    this.mood.setImageResource(R.drawable.ic_mood_satisfied)
-                    this.mood.setColorFilter(Color.GREEN)
+                    this.points.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_mood_satisfied,
+                        0,
+                        0,
+                        0
+                    )
+                    this.points.compoundDrawablesRelative[0].setTint(Color.GREEN)
                 }
                 3 -> {
-                    this.mood.setImageResource(R.drawable.ic_mood_verysatisfied)
-                    this.mood.setColorFilter(Color.GREEN)
+                    this.points.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_mood_verysatisfied,
+                        0,
+                        0,
+                        0
+                    )
+                    this.points.compoundDrawablesRelative[0].setTint(Color.GREEN)
                 }
             }
 

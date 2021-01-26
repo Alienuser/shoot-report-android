@@ -3,8 +3,12 @@ body {
 }
 
 h1 {
-    color: #0E2435;
+    color: #0AE20A;
     display: inline;
+}
+
+details {
+    margin-top: 20px;
 }
 
 h3 {

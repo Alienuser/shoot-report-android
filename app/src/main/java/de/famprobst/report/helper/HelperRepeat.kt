@@ -14,7 +14,7 @@ object HelperRepeat {
     private var adNumber = 0
 
     fun startRepeat(view: View, context: Context) {
-        adNumber = (1..3).random()
+        adNumber = (1..5).random()
         this.job = CoroutineScope(Dispatchers.IO).launch {
             while (true) {
                 withContext(Dispatchers.Main) {
@@ -35,12 +35,16 @@ object HelperRepeat {
             1 -> view.findViewById<ImageView>(R.id.ads)
                 .setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_advertising_1))
             2 -> view.findViewById<ImageView>(R.id.ads)
-                .setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_advertising_1))
+                .setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_advertising_2))
             3 -> view.findViewById<ImageView>(R.id.ads)
-                .setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_advertising_1))
+                .setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_advertising_3))
+            4 -> view.findViewById<ImageView>(R.id.ads)
+                .setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_advertising_5))
+            5 -> view.findViewById<ImageView>(R.id.ads)
+                .setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_advertising_5))
         }
 
-        if (adNumber >= 3) {
+        if (adNumber >= 5) {
             adNumber = 1
         } else {
             adNumber++

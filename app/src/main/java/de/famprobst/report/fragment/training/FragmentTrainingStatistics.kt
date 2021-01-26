@@ -66,57 +66,52 @@ class FragmentTrainingStatistics : Fragment() {
             chartCategoriesComplete = emptyArray()
             chartCategoriesHalf = emptyArray()
 
-            // Fill the complete and half array
-            var i = 1
-            while (chartCategoriesComplete.size < 10 && trainings.isNotEmpty()) {
-                if (trainings[trainings.size - i].shoots.sum().rem(1).equals(0.0)) {
+            // Fill the complete array
+            var i = 0
+
+            while (chartCategoriesComplete.size < 10 && trainings.isNotEmpty() && i < trainings.size) {
+                if (trainings[i].shoots.sum().rem(1).equals(0.0)) {
                     // Calculate the right points
-                    if (trainings[trainings.size - i].shootCount == 0) {
+                    if (trainings[i].shootCount == 0) {
                         chartSeriesComplete += 0
                     } else {
-                        chartSeriesComplete += floor(trainings[trainings.size - i].shoots.sum() / trainings[trainings.size - i].shootCount * 100) / 100
+                        chartSeriesComplete += floor(trainings[i].shoots.sum() / trainings[i].shootCount * 100) / 100
                     }
 
                     // Add data to categories
                     chartCategoriesComplete += SimpleDateFormat(
                         "dd. MMM",
                         Locale.getDefault()
-                    ).format(trainings[trainings.size - i].date)
+                    ).format(trainings[i].date)
                 }
 
-                if (i >= trainings.size) {
-                    break
-                } else {
-                    i++
-                }
+                i++
             }
 
-            i = 1
-            while (chartCategoriesHalf.size < 10 && trainings.isNotEmpty()) {
-                if (!trainings[trainings.size - i].shoots.sum().rem(1).equals(0.0)) {
+            // Fill the half array
+            i = 0
+
+            while (chartCategoriesHalf.size < 10 && trainings.isNotEmpty() && i < trainings.size) {
+                if (!trainings[i].shoots.sum().rem(1).equals(0.0)) {
                     // Check if we divide by 0
-                    if (trainings[trainings.size - i].shootCount == 0) {
+                    if (trainings[i].shootCount == 0) {
                         chartSeriesHalf += 0
                         break
                     }
 
                     // Calculate the right points
-                    chartSeriesHalf += floor((trainings[trainings.size - i].shoots.sum() / trainings[trainings.size - i].shootCount) * 100) / 100.0
+                    chartSeriesHalf += floor((trainings[i].shoots.sum() / trainings[i].shootCount) * 100) / 100.0
 
                     // Add data to categories
                     chartCategoriesHalf += SimpleDateFormat(
                         "dd. MMM",
                         Locale.getDefault()
                     ).format(
-                        trainings[trainings.size - i].date
+                        trainings[i].date
                     )
                 }
 
-                if (i >= trainings.size) {
-                    break
-                } else {
-                    i++
-                }
+                i++
             }
 
             // Set the chart
@@ -133,13 +128,13 @@ class FragmentTrainingStatistics : Fragment() {
             .backgroundColor("#FAFAFA")
             .yAxisTitle(getString(R.string.fragmentTrainingStatistics_Points))
             .colorsTheme(arrayOf("#0AE20A"))
-            .categories(chartCategoriesComplete)
+            .categories(chartCategoriesComplete.reversedArray())
             .series(
                 arrayOf(
                     AASeriesElement()
                         .showInLegend(false)
                         .name("\\u00D8")
-                        .data(chartSeriesComplete)
+                        .data(chartSeriesComplete.reversedArray())
                 )
             )
 
@@ -151,13 +146,13 @@ class FragmentTrainingStatistics : Fragment() {
             .backgroundColor("#FAFAFA")
             .yAxisTitle(getString(R.string.fragmentTrainingStatistics_Points))
             .colorsTheme(arrayOf("#0E2435"))
-            .categories(chartCategoriesHalf)
+            .categories(chartCategoriesHalf.reversedArray())
             .series(
                 arrayOf(
                     AASeriesElement()
                         .showInLegend(false)
                         .name("\\u00D8")
-                        .data(chartSeriesHalf)
+                        .data(chartSeriesHalf.reversedArray())
                 )
             )
 

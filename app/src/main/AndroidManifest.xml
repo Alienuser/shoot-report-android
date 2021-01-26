@@ -69,6 +69,11 @@
             android:label="@string/general_Name"
             android:parentActivityName=".activity.ActivityMain" />
 
+        <activity
+            android:name=".activity.ActivityPartner"
+            android:label="@string/general_Name"
+            android:parentActivityName=".activity.ActivityMain" />
+
     </application>
 
 </manifest>
