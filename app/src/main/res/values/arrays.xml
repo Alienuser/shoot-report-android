@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string-array name="activityRilfe_Weapons">
+        <item>Air Rifle</item>
+        <item>Air Rifle 3-position</item>
+        <item>Light Rifle</item>
+        <item>Small Bore Rifle</item>
+        <item>Small Bore Rifle 3-position</item>
+        <item>Air Pistol</item>
+        <item>Light Pistol</item>
+    </string-array>
+
     <string-array name="activityDetails_InputKindPossibilities">
-        <item>Einrichten</item>
-        <item>Anschlagsaufbau</item>
-        <item>Nullpunkt</item>
-        <item>Atmung</item>
-        <item>Zielen</item>
-        <item>Abziehen/ Druckverlauf</item>
-        <item>Koordination</item>
-        <item>Phasentraining</item>
-        <item>Linksanschläge</item>
-        <item>Leistungstraining</item>
-        <item>Wettkampftraining</item>
-        <item>Finaltraining</item>
-        <item>Sonstiges</item>
+        <item>Set Up</item>
+        <item>Positioning Set Up</item>
+        <item>Zero Point</item>
+        <item>Breathing</item>
+        <item>Aiming</item>
+        <item>Trigger/Pressure Course</item>
+        <item>Coordination</item>
+        <item>Phase Training</item>
+        <item>Left Positioning</item>
+        <item>Performance Training</item>
+        <item>Competition Training</item>
+        <item>Final Training</item>
+        <item>Other</item>
     </string-array>
 
     <string-array name="activityCompetition_InputKindPossibilities">
-        <item>Ligawettkampf</item>
-        <item>Rundenwettkampf</item>
-        <item>Meisterschaft</item>
-        <item>Kontrollwettkampf</item>
-        <item>Sonstiges</item>
+        <item>League Competition</item>
+        <item>Round Competition</item>
+        <item>Championship</item>
+        <item>Control Competition</item>
+        <item>Other</item>
     </string-array>
 
 </resources>

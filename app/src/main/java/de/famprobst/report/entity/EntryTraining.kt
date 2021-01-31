@@ -9,7 +9,7 @@ import java.util.*
 
 @Entity(tableName = "training_table")
 data class EntryTraining(
-    @PrimaryKey(autoGenerate = true) var id: Int,
+
     @TypeConverters(HelperConverter::class) @ColumnInfo(name = "date") var date: Date,
     @ColumnInfo(name = "place") var place: String,
     @ColumnInfo(name = "training") var training: String,
@@ -19,4 +19,7 @@ data class EntryTraining(
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB) var image: ByteArray,
     @ColumnInfo(name = "report") var report: String,
     @ColumnInfo(name = "rifleId") var rifleId: Int
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}

@@ -19,17 +19,18 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/activityDetails_InputKindSpinnerLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:enabled="false"
                 android:hint="@string/activityDetails_CompetitionInputKind">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/activityCompetition_InputKindSpinner"
+                    android:id="@+id/activityDetails_InputKindSpinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />
+                    android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -38,12 +39,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:enabled="false"
                 android:hint="@string/activityDetails_CompetitionInputPlace">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />
+                    android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,12 +53,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:enabled="false"
                 android:hint="@string/activityDetails_InputDate">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />
+                    android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,6 +70,7 @@
 
                 <Button
                     android:id="@+id/activityDetails_ButtonPhoto"
+                    style="@style/Widget.MaterialComponents.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
@@ -79,6 +81,7 @@
 
                 <Button
                     android:id="@+id/activityDetails_ButtonQR"
+                    style="@style/Widget.MaterialComponents.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
@@ -101,16 +104,16 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
+                    android:enabled="false"
                     android:hint="@string/activityDetails_InputPoints1">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:enabled="false"
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/activityDetails_EditInputPoints2"
                         android:selectAllOnFocus="true"
-                        android:text="0" />
+                        android:text="@string/fragmentCompetition_SeriesDefault" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -120,17 +123,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
+                    android:enabled="false"
                     android:hint="@string/activityDetails_InputPoints2">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/activityDetails_EditInputPoints2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:enabled="false"
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/activityDetails_EditInputPoints3"
                         android:selectAllOnFocus="true"
-                        android:text="0" />
+                        android:text="@string/fragmentCompetition_SeriesDefault" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,17 +143,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
+                    android:enabled="false"
                     android:hint="@string/activityDetails_InputPoints3">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/activityDetails_EditInputPoints3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:enabled="false"
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/activityDetails_EditInputPoints4"
                         android:selectAllOnFocus="true"
-                        android:text="0" />
+                        android:text="@string/fragmentCompetition_SeriesDefault" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,17 +172,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
+                    android:enabled="false"
                     android:hint="@string/activityDetails_InputPoints4">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/activityDetails_EditInputPoints4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:enabled="false"
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/activityDetails_EditInputPoints5"
                         android:selectAllOnFocus="true"
-                        android:text="0" />
+                        android:text="@string/fragmentCompetition_SeriesDefault" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -189,17 +192,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
+                    android:enabled="false"
                     android:hint="@string/activityDetails_InputPoints5">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/activityDetails_EditInputPoints5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:enabled="false"
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/activityDetails_EditInputPoints6"
                         android:selectAllOnFocus="true"
-                        android:text="0" />
+                        android:text="@string/fragmentCompetition_SeriesDefault" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -209,17 +212,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
+                    android:enabled="false"
                     android:hint="@string/activityDetails_InputPoints6">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/activityDetails_EditInputPoints6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:enabled="false"
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/activityDetails_EditInputPoints7"
                         android:selectAllOnFocus="true"
-                        android:text="0" />
+                        android:text="@string/fragmentCompetition_SeriesDefault" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -229,6 +232,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal">
 
                 <TextView
@@ -283,12 +287,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:enabled="false"
                 android:hint="@string/activityDetails_CompetitionInputReport">
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
                     android:gravity="start"
                     android:importantForAutofill="no"
                     android:inputType="textMultiLine"
@@ -303,10 +307,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/activityDetails_ButtonShare"
+                    style="@style/Widget.MaterialComponents.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="7dp"
@@ -315,6 +321,7 @@
 
                 <Button
                     android:id="@+id/activityDetails_ButtonSave"
+                    style="@style/Widget.MaterialComponents.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"

@@ -10,7 +10,6 @@ import java.util.*
 @Entity(tableName = "competition_table")
 data class EntryCompetition(
 
-    @PrimaryKey(autoGenerate = true) var id: Int,
     @TypeConverters(HelperConverter::class) @ColumnInfo(name = "date") var date: Date,
     @ColumnInfo(name = "place") var place: String,
     @ColumnInfo(name = "kind") var kind: String,
@@ -18,4 +17,7 @@ data class EntryCompetition(
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB) var image: ByteArray,
     @ColumnInfo(name = "report") var report: String,
     @ColumnInfo(name = "rifleId") var rifleId: Int
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}

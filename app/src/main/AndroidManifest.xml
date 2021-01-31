@@ -9,6 +9,7 @@
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -34,43 +35,51 @@
 
         <activity
             android:name=".activity.ActivityRifle"
+            android:configChanges="orientation|screenSize"
             android:label="@string/general_Name" />
 
         <activity
             android:name=".activity.ActivityMain"
+            android:configChanges="orientation|screenSize"
             android:label="@string/general_Name"
             android:parentActivityName=".activity.ActivityRifle" />
 
         <activity
             android:name=".activity.ActivityDetailsTraining"
+            android:configChanges="orientation|screenSize"
             android:label="@string/general_Name"
             android:parentActivityName=".activity.ActivityMain"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity
             android:name=".activity.ActivityDetailsCompetition"
+            android:configChanges="orientation|screenSize"
             android:label="@string/general_Name"
             android:parentActivityName=".activity.ActivityMain"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity
             android:name=".activity.ActivityTrainer"
+            android:configChanges="orientation|screenSize"
             android:label="@string/general_Name"
             android:parentActivityName=".activity.ActivityMain" />
 
         <activity
             android:name=".activity.ActivityMasterData"
+            android:configChanges="orientation|screenSize"
             android:label="@string/general_Name"
             android:parentActivityName=".activity.ActivityMain"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity
             android:name=".activity.ActivityInformation"
+            android:configChanges="orientation|screenSize"
             android:label="@string/general_Name"
             android:parentActivityName=".activity.ActivityMain" />
 
         <activity
             android:name=".activity.ActivityPartner"
+            android:configChanges="orientation|screenSize"
             android:label="@string/general_Name"
             android:parentActivityName=".activity.ActivityMain" />
 

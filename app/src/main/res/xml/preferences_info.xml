@@ -33,4 +33,10 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/fragmentInformation_TitleSource">
+
+        <Preference android:title="@string/fragmentInformation_SourceTitle" />
+
+    </PreferenceCategory>
+
 </androidx.preference.PreferenceScreen>

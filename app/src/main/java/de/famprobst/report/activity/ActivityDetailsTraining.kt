@@ -15,13 +15,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.view.Menu
-import android.view.MenuItem
-import android.view.MotionEvent
-import android.view.View
+import android.view.*
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
@@ -47,7 +44,35 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
     private lateinit var output: File
 
     // Input
-    private lateinit var spinner: AutoCompleteTextView
+    private lateinit var layoutDetails: CoordinatorLayout
+    private lateinit var inputRadioGroup: RadioGroup
+    private lateinit var inputRadioMinusMinus: RadioButton
+    private lateinit var inputRadioMinus: RadioButton
+    private lateinit var inputRadioPlus: RadioButton
+    private lateinit var inputRadioPlusPlus: RadioButton
+    private lateinit var inputSpinnerLayout: TextInputLayout
+    private lateinit var inputSpinner: MaterialAutoCompleteTextView
+    private lateinit var inputPlace: TextInputLayout
+    private lateinit var inputDate: TextInputLayout
+    private lateinit var inputCount: TextInputLayout
+    private lateinit var inputPoints1: TextInputLayout
+    private lateinit var inputPoints2: TextInputLayout
+    private lateinit var inputPoints3: TextInputLayout
+    private lateinit var inputPoints4: TextInputLayout
+    private lateinit var inputPoints5: TextInputLayout
+    private lateinit var inputPoints6: TextInputLayout
+    private lateinit var inputPoints7: TextInputLayout
+    private lateinit var inputPoints8: TextInputLayout
+    private lateinit var inputPoints9: TextInputLayout
+    private lateinit var inputReport: TextInputLayout
+    private lateinit var textPoints: TextView
+    private lateinit var textAverage: TextView
+    private lateinit var buttonPhoto: Button
+    private lateinit var buttonQR: Button
+    private lateinit var buttonShare: Button
+    private lateinit var buttonSave: Button
+    private lateinit var imagePhoto: ImageView
+    private lateinit var imageDelete: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +81,7 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
         setContentView(R.layout.activity_details_training)
 
         // Define toolbar
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         // Add back button to activity
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -75,9 +99,35 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
         val extras = intent.extras
 
         // Get all inputs
-        spinner = findViewById(R.id.activityDetails_InputKindSpinner)
-
-        setupSpinner()
+        layoutDetails = findViewById(R.id.activity_details)
+        inputRadioGroup = findViewById(R.id.activityDetails_radioGroup)
+        inputRadioMinusMinus = findViewById(R.id.activityDetails_radioMinusMinus)
+        inputRadioMinus = findViewById(R.id.activityDetails_radioMinus)
+        inputRadioPlus = findViewById(R.id.activityDetails_radioPlus)
+        inputRadioPlusPlus = findViewById(R.id.activityDetails_radioPlusPlus)
+        inputSpinnerLayout = findViewById(R.id.activityDetails_InputKindSpinnerLayout)
+        inputSpinner = findViewById(R.id.activityDetails_InputKindSpinner)
+        inputPlace = findViewById(R.id.activityDetails_InputPlace)
+        inputDate = findViewById(R.id.activityDetails_InputDate)
+        inputCount = findViewById(R.id.activityDetails_InputCount)
+        inputPoints1 = findViewById(R.id.activityDetails_InputPoints1)
+        inputPoints2 = findViewById(R.id.activityDetails_InputPoints2)
+        inputPoints3 = findViewById(R.id.activityDetails_InputPoints3)
+        inputPoints4 = findViewById(R.id.activityDetails_InputPoints4)
+        inputPoints5 = findViewById(R.id.activityDetails_InputPoints5)
+        inputPoints6 = findViewById(R.id.activityDetails_InputPoints6)
+        inputPoints7 = findViewById(R.id.activityDetails_InputPoints7)
+        inputPoints8 = findViewById(R.id.activityDetails_InputPoints8)
+        inputPoints9 = findViewById(R.id.activityDetails_InputPoints9)
+        inputReport = findViewById(R.id.activityDetails_InputReport)
+        textPoints = findViewById(R.id.activityDetails_Points)
+        textAverage = findViewById(R.id.activityDetails_Average)
+        buttonPhoto = findViewById(R.id.activityDetails_ButtonPhoto)
+        buttonQR = findViewById(R.id.activityDetails_ButtonQR)
+        buttonShare = findViewById(R.id.activityDetails_ButtonShare)
+        buttonSave = findViewById(R.id.activityDetails_ButtonSave)
+        imagePhoto = findViewById(R.id.activityDetails_Photo)
+        imageDelete = findViewById(R.id.activityDetails_DeletePhoto)
 
         // Check what we have to do
         when {
@@ -89,22 +139,21 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
             }
         }
 
+        // Setup the spinner
+        setupSpinner()
+
         // Setup the date picker
         setupDatePicker()
 
         // Set onClickListener for qr button
-        findViewById<Button>(R.id.activityDetails_ButtonQR).setOnClickListener {
-            scanQR()
-        }
+        buttonQR.setOnClickListener { scanQR() }
 
         // Set onClickListener for photo button
-        findViewById<Button>(R.id.activityDetails_ButtonPhoto).setOnClickListener {
-            takePhoto()
-        }
+        buttonPhoto.setOnClickListener { takePhoto() }
 
         // Set onClickListener for delete photo button
-        findViewById<ImageView>(R.id.activityDetails_DeletePhoto).setOnClickListener {
-            if (findViewById<ImageView>(R.id.activityDetails_DeletePhoto).isClickable) {
+        imageDelete.setOnClickListener {
+            if (imageDelete.isClickable) {
                 val builder = AlertDialog.Builder(this@ActivityDetailsTraining)
                 builder.setMessage(R.string.activityDetails_DeleteMessage)
                     .setCancelable(false)
@@ -118,80 +167,24 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
                 alert.show()
             }
         }
-        findViewById<ImageView>(R.id.activityDetails_DeletePhoto).isClickable = false
 
         // Set onClickListener for save button
-        findViewById<Button>(R.id.activityDetails_ButtonSave).setOnClickListener {
-            saveDetails()
-        }
+        buttonSave.setOnClickListener { saveDetails() }
 
         // Set onClickListener for share button
-        findViewById<Button>(R.id.activityDetails_ButtonShare).setOnClickListener {
-            shareDetails()
-        }
+        buttonShare.setOnClickListener { shareDetails() }
 
         // Calculation
-        findViewById<TextInputLayout>(R.id.activityDetails_InputCount).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints7).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints8).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints9).editText?.doAfterTextChanged { this.calculatePoints() }
-
-        // Set the text when orientation changed
-        if (savedInstanceState != null) {
-            when (savedInstanceState.getInt("input_mood")) {
-                0 -> {
-                    findViewById<RadioGroup>(R.id.activityDetails_radioGroup).check(R.id.activityDetails_radioMinusMinus)
-                }
-                1 -> {
-                    findViewById<RadioGroup>(R.id.activityDetails_radioGroup).check(R.id.activityDetails_radioMinus)
-                }
-                2 -> {
-                    findViewById<RadioGroup>(R.id.activityDetails_radioGroup).check(R.id.activityDetails_radioPlus)
-                }
-                3 -> {
-                    findViewById<RadioGroup>(R.id.activityDetails_radioGroup).check(R.id.activityDetails_radioPlusPlus)
-                }
-            }
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPlace).editText?.setText(
-                savedInstanceState.getString("input_place")
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputReport).editText?.setText(
-                savedInstanceState.getString("input_report")
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.setText(
-                savedInstanceState.getString("input_points1")
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.setText(
-                savedInstanceState.getString("input_points2")
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.setText(
-                savedInstanceState.getString("input_points3")
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.setText(
-                savedInstanceState.getString("input_points4")
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.setText(
-                savedInstanceState.getString("input_points5")
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.setText(
-                savedInstanceState.getString("input_points6")
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints7).editText?.setText(
-                savedInstanceState.getString("input_points7")
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints8).editText?.setText(
-                savedInstanceState.getString("input_points8")
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints9).editText?.setText(
-                savedInstanceState.getString("input_points9")
-            )
-        }
+        inputCount.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints1.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints2.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints3.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints4.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints5.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints6.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints7.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints8.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints9.editText?.doAfterTextChanged { this.calculatePoints() }
 
         // Calculate for the first time
         this.calculatePoints()
@@ -214,66 +207,8 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        when (findViewById<RadioButton>(findViewById<RadioGroup>(R.id.activityDetails_radioGroup).checkedRadioButtonId)) {
-            findViewById<RadioButton>(R.id.activityDetails_radioMinusMinus) -> {
-                outState.putInt("input_mood", 0)
-            }
-            findViewById<RadioButton>(R.id.activityDetails_radioMinus) -> {
-                outState.putInt("input_mood", 1)
-            }
-            findViewById<RadioButton>(R.id.activityDetails_radioPlus) -> {
-                outState.putInt("input_mood", 2)
-            }
-            findViewById<RadioButton>(R.id.activityDetails_radioPlusPlus) -> {
-                outState.putInt("input_mood", 3)
-            }
-        }
-        outState.putString(
-            "input_place",
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPlace).editText?.text.toString()
-        )
-        outState.putString(
-            "input_report",
-            findViewById<TextInputLayout>(R.id.activityDetails_InputReport).editText?.text.toString()
-        )
-        outState.putString(
-            "input_points1",
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.text.toString()
-        )
-        outState.putString(
-            "input_points2",
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.text.toString()
-        )
-        outState.putString(
-            "input_points3",
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.text.toString()
-        )
-        outState.putString(
-            "input_points4",
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.text.toString()
-        )
-        outState.putString(
-            "input_points5",
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.text.toString()
-        )
-        outState.putString(
-            "input_points6",
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.text.toString()
-        )
-        outState.putString(
-            "input_points7",
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints7).editText?.text.toString()
-        )
-        outState.putString(
-            "input_points8",
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints8).editText?.text.toString()
-        )
-        outState.putString(
-            "input_points9",
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints9).editText?.text.toString()
-        )
+    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        trainingKind = parent?.getItemAtPosition(position).toString()
     }
 
     private fun setupSpinner() {
@@ -283,8 +218,8 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
             android.R.layout.simple_spinner_item
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.setAdapter(adapter)
-        spinner.onItemClickListener = this
+        inputSpinner.setAdapter(adapter)
+        inputSpinner.onItemClickListener = this
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -300,14 +235,10 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
 
                 val myFormat = "dd.MM.yyyy"
                 val sdf = SimpleDateFormat(myFormat, Locale.GERMAN)
-                findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText?.setText(
-                    sdf.format(
-                        cal.time
-                    )
-                )
+                inputDate.editText?.setText(sdf.format(cal.time))
             }
 
-        findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText?.setOnTouchListener { p0, event ->
+        inputDate.editText?.setOnTouchListener { p0, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 DatePickerDialog(
                     p0.context, dateSetListener,
@@ -320,10 +251,6 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
         }
     }
 
-    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        trainingKind = parent?.getItemAtPosition(position).toString()
-    }
-
     private fun addNewEntry() {
         // Enable all fields
         this.switchEditable()
@@ -332,9 +259,7 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
         supportActionBar?.title = getString(R.string.activityDetails_AddTraining)
 
         // Set default date
-        findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText?.setText(
-            SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
-        )
+        inputDate.editText?.setText(SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN).format(date))
 
         // Set variables
         this.newEntry = true
@@ -347,7 +272,7 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
         // Set variables
         this.newEntry = false
 
-        // Show data
+        // Get data and show them
         val trainingModel = ViewModelProvider(this).get(ModelTraining::class.java)
         trainingModel.getById(trainingId).observe(this, { training ->
             // Set training
@@ -355,168 +280,84 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
 
             // Set data
             when (training.indicator) {
-                0 -> {
-                    findViewById<RadioGroup>(R.id.activityDetails_radioGroup).check(R.id.activityDetails_radioMinusMinus)
-                }
-                1 -> {
-                    findViewById<RadioGroup>(R.id.activityDetails_radioGroup).check(R.id.activityDetails_radioMinus)
-                }
-                2 -> {
-                    findViewById<RadioGroup>(R.id.activityDetails_radioGroup).check(R.id.activityDetails_radioPlus)
-                }
-                3 -> {
-                    findViewById<RadioGroup>(R.id.activityDetails_radioGroup).check(R.id.activityDetails_radioPlusPlus)
-                }
+                0 -> inputRadioGroup.check(inputRadioMinusMinus.id)
+                1 -> inputRadioGroup.check(inputRadioMinus.id)
+                2 -> inputRadioGroup.check(inputRadioPlus.id)
+                3 -> inputRadioGroup.check(inputRadioPlusPlus.id)
             }
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPlace).editText?.setText(
-                training.place
-            )
-            spinner.setText(training.training)
+            inputPlace.editText?.setText(training.place)
+            inputSpinner.setText(training.training)
             trainingKind = training.training
             date = training.date
-            findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText?.setText(
-                SimpleDateFormat("dd.MM.yyyy").format(training.date)
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputCount).editText?.setText(
-                training.shootCount.toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.setText(
-                training.shoots[0].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.setText(
-                training.shoots[1].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.setText(
-                training.shoots[2].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.setText(
-                training.shoots[3].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.setText(
-                training.shoots[4].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.setText(
-                training.shoots[5].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints7).editText?.setText(
-                training.shoots[6].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints8).editText?.setText(
-                training.shoots[7].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints9).editText?.setText(
-                training.shoots[8].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputReport).editText?.setText(
-                training.report
-            )
+            inputDate.editText?.setText(SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN).format(date))
+            inputCount.editText?.setText(training.shootCount.toString())
+            inputPoints1.editText?.setText(training.shoots[0].toString())
+            inputPoints2.editText?.setText(training.shoots[1].toString())
+            inputPoints3.editText?.setText(training.shoots[2].toString())
+            inputPoints4.editText?.setText(training.shoots[3].toString())
+            inputPoints5.editText?.setText(training.shoots[4].toString())
+            inputPoints6.editText?.setText(training.shoots[5].toString())
+            inputPoints7.editText?.setText(training.shoots[6].toString())
+            inputPoints8.editText?.setText(training.shoots[7].toString())
+            inputPoints9.editText?.setText(training.shoots[8].toString())
+            inputReport.editText?.setText(training.report)
+
             if (training.image.isNotEmpty()) {
-                findViewById<ImageView>(R.id.activityDetails_Photo).setImageBitmap(
+                imagePhoto.setImageBitmap(
                     BitmapFactory.decodeByteArray(
                         training.image,
                         0,
                         training.image.size
                     ) as Bitmap
                 )
-                findViewById<ImageView>(R.id.activityDetails_DeletePhoto).visibility = View.VISIBLE
+                imageDelete.visibility = View.VISIBLE
                 trainingImage = training.image
             }
         })
     }
 
     private fun saveDetails() {
+        // Get the current training model
+        val trainingModel = ViewModelProvider(this).get(ModelTraining::class.java)
+
         // Get indicator
         var indicator = 2
-        when (findViewById<RadioButton>(findViewById<RadioGroup>(R.id.activityDetails_radioGroup).checkedRadioButtonId)) {
-            findViewById<RadioButton>(R.id.activityDetails_radioMinusMinus) -> {
-                indicator = 0
-            }
-            findViewById<RadioButton>(R.id.activityDetails_radioMinus) -> {
-                indicator = 1
-            }
-            findViewById<RadioButton>(R.id.activityDetails_radioPlus) -> {
-                indicator = 2
-            }
-            findViewById<RadioButton>(R.id.activityDetails_radioPlusPlus) -> {
-                indicator = 3
-            }
+        when (inputRadioGroup.checkedRadioButtonId) {
+            inputRadioMinusMinus.id -> indicator = 0
+            inputRadioMinus.id -> indicator = 1
+            inputRadioPlus.id -> indicator = 2
+            inputRadioPlusPlus.id -> indicator = 3
         }
 
-        // Check what we have to save
+        // Define the new object
+        val entryTraining = EntryTraining(
+            date,
+            inputPlace.editText?.text.toString(),
+            trainingKind,
+            inputCount.editText?.text.toString().toInt(),
+            listOf(
+                inputPoints1.editText?.text.toString().toDouble(),
+                inputPoints2.editText?.text.toString().toDouble(),
+                inputPoints3.editText?.text.toString().toDouble(),
+                inputPoints4.editText?.text.toString().toDouble(),
+                inputPoints5.editText?.text.toString().toDouble(),
+                inputPoints6.editText?.text.toString().toDouble(),
+                inputPoints7.editText?.text.toString().toDouble(),
+                inputPoints8.editText?.text.toString().toDouble(),
+                inputPoints9.editText?.text.toString().toDouble()
+            ),
+            indicator,
+            trainingImage,
+            inputReport.editText?.text.toString(),
+            rifleId
+        )
+
+        // Save ot update the entry
         if (this.newEntry) {
-
-            // Save data
-            val trainingModel = ViewModelProvider(this).get(ModelTraining::class.java)
-
-            trainingModel.insert(
-                EntryTraining(
-                    0,
-                    date,
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPlace).editText?.text.toString(),
-                    trainingKind,
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputCount).editText?.text.toString()
-                        .toInt(),
-                    listOf(
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.text.toString()
-                            .toDouble(),
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.text.toString()
-                            .toDouble(),
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.text.toString()
-                            .toDouble(),
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.text.toString()
-                            .toDouble(),
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.text.toString()
-                            .toDouble(),
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.text.toString()
-                            .toDouble(),
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints7).editText?.text.toString()
-                            .toDouble(),
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints8).editText?.text.toString()
-                            .toDouble(),
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints9).editText?.text.toString()
-                            .toDouble()
-                    ),
-                    indicator,
-                    trainingImage,
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputReport).editText?.text.toString(),
-                    rifleId
-                )
-            )
+            trainingModel.insert(entryTraining)
         } else {
-            this.modelTraining.date = date
-            this.modelTraining.place =
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPlace).editText?.text.toString()
-            this.modelTraining.training = trainingKind
-            this.modelTraining.shootCount =
-                findViewById<TextInputLayout>(R.id.activityDetails_InputCount).editText?.text.toString()
-                    .toInt()
-            this.modelTraining.shoots =
-                listOf(
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.text.toString()
-                        .toDouble(),
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.text.toString()
-                        .toDouble(),
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.text.toString()
-                        .toDouble(),
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.text.toString()
-                        .toDouble(),
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.text.toString()
-                        .toDouble(),
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.text.toString()
-                        .toDouble(),
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints7).editText?.text.toString()
-                        .toDouble(),
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints8).editText?.text.toString()
-                        .toDouble(),
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints9).editText?.text.toString()
-                        .toDouble()
-                )
-            this.modelTraining.indicator = indicator
-            this.modelTraining.image = trainingImage
-            this.modelTraining.report =
-                findViewById<TextInputLayout>(R.id.activityDetails_InputReport).editText?.text.toString()
-
-            val trainingModel = ViewModelProvider(this).get(ModelTraining::class.java)
+            entryTraining.id = this.modelTraining.id
+            this.modelTraining = entryTraining
             trainingModel.update(this.modelTraining)
         }
 
@@ -525,55 +366,33 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
     }
 
     private fun switchEditable() {
-        findViewById<RadioButton>(R.id.activityDetails_radioMinusMinus).isEnabled =
-            !(findViewById<RadioButton>(R.id.activityDetails_radioMinusMinus).isEnabled)
-        findViewById<RadioButton>(R.id.activityDetails_radioMinus).isEnabled =
-            !(findViewById<RadioButton>(R.id.activityDetails_radioMinus).isEnabled)
-        findViewById<RadioButton>(R.id.activityDetails_radioPlus).isEnabled =
-            !(findViewById<RadioButton>(R.id.activityDetails_radioPlus).isEnabled)
-        findViewById<RadioButton>(R.id.activityDetails_radioPlusPlus).isEnabled =
-            !(findViewById<RadioButton>(R.id.activityDetails_radioPlusPlus).isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPlace).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPlace).editText!!.isEnabled)
-        findViewById<MaterialAutoCompleteTextView>(R.id.activityDetails_InputKindSpinner).isEnabled =
-            !(findViewById<MaterialAutoCompleteTextView>(R.id.activityDetails_InputKindSpinner).isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputCount).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputCount).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints7).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints7).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints8).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints8).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints9).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints9).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputReport).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputReport).editText!!.isEnabled)
-        findViewById<Button>(R.id.activityDetails_ButtonSave).isEnabled =
-            !(findViewById<Button>(R.id.activityDetails_ButtonSave).isEnabled)
-        findViewById<Button>(R.id.activityDetails_ButtonPhoto).isEnabled =
-            !(findViewById<Button>(R.id.activityDetails_ButtonPhoto).isEnabled)
-        findViewById<Button>(R.id.activityDetails_ButtonQR).isEnabled =
-            !(findViewById<Button>(R.id.activityDetails_ButtonQR).isEnabled)
-        findViewById<ImageView>(R.id.activityDetails_DeletePhoto).isClickable =
-            !(findViewById<ImageView>(R.id.activityDetails_DeletePhoto).isClickable)
+        inputRadioMinusMinus.isEnabled = !inputRadioMinusMinus.isEnabled
+        inputRadioMinus.isEnabled = !inputRadioMinus.isEnabled
+        inputRadioPlus.isEnabled = !inputRadioPlus.isEnabled
+        inputRadioPlusPlus.isEnabled = !inputRadioPlusPlus.isEnabled
+        inputPlace.isEnabled = !inputPlace.isEnabled
+        inputSpinnerLayout.isEnabled = !inputSpinnerLayout.isEnabled
+        inputDate.isEnabled = !inputDate.isEnabled
+        inputCount.isEnabled = !inputCount.isEnabled
+        inputPoints1.isEnabled = !inputPoints1.isEnabled
+        inputPoints2.isEnabled = !inputPoints2.isEnabled
+        inputPoints3.isEnabled = !inputPoints3.isEnabled
+        inputPoints4.isEnabled = !inputPoints4.isEnabled
+        inputPoints5.isEnabled = !inputPoints5.isEnabled
+        inputPoints6.isEnabled = !inputPoints6.isEnabled
+        inputPoints7.isEnabled = !inputPoints7.isEnabled
+        inputPoints8.isEnabled = !inputPoints8.isEnabled
+        inputPoints9.isEnabled = !inputPoints9.isEnabled
+        inputReport.isEnabled = !inputReport.isEnabled
+        buttonSave.isEnabled = !buttonSave.isEnabled
+        buttonPhoto.isEnabled = !buttonPhoto.isEnabled
+        buttonQR.isEnabled = !buttonQR.isEnabled
+        imageDelete.isClickable = !imageDelete.isClickable
     }
 
     private fun scanQR() {
         Snackbar.make(
-            findViewById(R.id.activity_details),
+            layoutDetails,
             getText(R.string.activityDetails_InfoQR),
             Snackbar.LENGTH_LONG
         ).show()
@@ -602,11 +421,10 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
         if (resultCode == Activity.RESULT_OK && requestCode == 200) {
             if (data?.data != null) {
                 // Single image
-                findViewById<ImageView>(R.id.activityDetails_Photo).setImageURI(data.data)
+                imagePhoto.setImageURI(data.data)
 
                 // Save image
-                val bitmap =
-                    (findViewById<ImageView>(R.id.activityDetails_Photo).drawable as BitmapDrawable).bitmap
+                val bitmap = (imagePhoto.drawable as BitmapDrawable).bitmap
                 val stream = ByteArrayOutputStream()
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 80, stream)
                 trainingImage = stream.toByteArray()
@@ -618,16 +436,16 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
                         Uri.fromFile(output)
                     ), 90f
                 )
-                findViewById<ImageView>(R.id.activityDetails_Photo).setImageURI(null)
-                findViewById<ImageView>(R.id.activityDetails_Photo).setImageBitmap(bitmap)
+                imagePhoto.setImageURI(null)
+                imagePhoto.setImageBitmap(bitmap)
 
                 // Save image
                 val stream = ByteArrayOutputStream()
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 80, stream)
                 trainingImage = stream.toByteArray()
             }
-            findViewById<ImageView>(R.id.activityDetails_DeletePhoto).visibility = View.VISIBLE
-            findViewById<ImageView>(R.id.activityDetails_DeletePhoto).isClickable = true
+            imageDelete.visibility = View.VISIBLE
+            imageDelete.isClickable = true
         }
     }
 
@@ -640,98 +458,49 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
     }
 
     private fun deletePhoto() {
-        findViewById<ImageView>(R.id.activityDetails_Photo).setImageDrawable(null)
-        findViewById<ImageView>(R.id.activityDetails_DeletePhoto).visibility = View.GONE
+        imagePhoto.setImageDrawable(null)
+        imageDelete.visibility = View.GONE
         trainingImage = byteArrayOf()
     }
 
     private fun shareDetails() {
         Snackbar.make(
-            findViewById(R.id.activity_details),
+            layoutDetails,
             getText(R.string.activityDetails_InfoShare),
             Snackbar.LENGTH_LONG
         ).show()
     }
 
     private fun calculatePoints() {
+        // Add all points to list
         val points: MutableList<Double> = mutableListOf()
-
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.text.toString()
-                    .toDouble()
-            )
-        }
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.text.toString()
-                    .toDouble()
-            )
-        }
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.text.toString()
-                    .toDouble()
-            )
-        }
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.text.toString()
-                    .toDouble()
-            )
-        }
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.text.toString()
-                    .toDouble()
-            )
-        }
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.text.toString()
-                    .toDouble()
-            )
-        }
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints7).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints7).editText?.text.toString()
-                    .toDouble()
-            )
-        }
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints8).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints8).editText?.text.toString()
-                    .toDouble()
-            )
-        }
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints9).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints9).editText?.text.toString()
-                    .toDouble()
-            )
-        }
+        points.add(inputPoints1.editText?.text?.toString()!!.toDouble())
+        points.add(inputPoints2.editText?.text?.toString()!!.toDouble())
+        points.add(inputPoints3.editText?.text?.toString()!!.toDouble())
+        points.add(inputPoints4.editText?.text?.toString()!!.toDouble())
+        points.add(inputPoints5.editText?.text?.toString()!!.toDouble())
+        points.add(inputPoints6.editText?.text?.toString()!!.toDouble())
+        points.add(inputPoints7.editText?.text?.toString()!!.toDouble())
+        points.add(inputPoints8.editText?.text?.toString()!!.toDouble())
+        points.add(inputPoints9.editText?.text?.toString()!!.toDouble())
 
         // Set value
         if (points.sum().rem(1).equals(0.0)) {
-            findViewById<TextView>(R.id.activityDetails_Points).text = "%.0f".format(points.sum())
+            textPoints.text = "%.0f".format(points.sum())
         } else {
-            findViewById<TextView>(R.id.activityDetails_Points).text = "%.1f".format(points.sum())
+            textPoints.text = "%.1f".format(points.sum())
         }
 
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputCount).editText?.text.isNullOrEmpty() && !findViewById<TextInputLayout>(
-                R.id.activityDetails_InputCount
-            ).editText?.text.toString().equals("0")
-        ) {
-            findViewById<TextView>(R.id.activityDetails_Average).text = getString(
+        // Check what to show as average
+        if (inputCount.editText?.text?.toString() != "0") {
+            textAverage.text = getString(
                 R.string.activityDetails_Average,
                 "%.2f".format(
-                    (points.sum() / findViewById<TextInputLayout>(R.id.activityDetails_InputCount).editText?.text.toString()
-                        .toDouble() * 100) / 100.0
+                    (points.sum() / inputCount.editText?.text.toString().toDouble() * 100) / 100.0
                 )
             )
         } else {
-            findViewById<TextView>(R.id.activityDetails_Average).text =
-                getString(R.string.activityDetails_Average, "0")
+            textAverage.text = getString(R.string.activityDetails_Average, "0")
         }
     }
 }

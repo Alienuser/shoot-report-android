@@ -47,13 +47,15 @@ class AdapterRifle(
         fun bind(rifle: EntryRifle, clickListener: OnItemClickListener) {
 
             // Define content for text
-            name.text = rifle.rifle
+            this.name.text =
+                itemView.context.resources.getStringArray(R.array.activityRilfe_Weapons)[rifle.id - 1]
 
-            // Set click listener
-            itemView.setOnClickListener {
+            // Set the click listener
+            this.itemView.setOnClickListener {
                 clickListener.onItemClick(rifle)
             }
 
+            // Set the delete click listener
             this.delete.setOnClickListener {
                 clickListener.onItemDelete(rifle)
             }

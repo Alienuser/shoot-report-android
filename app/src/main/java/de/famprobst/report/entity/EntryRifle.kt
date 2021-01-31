@@ -8,7 +8,6 @@ import androidx.room.PrimaryKey
 data class EntryRifle(
 
     @PrimaryKey(autoGenerate = true) var id: Int,
-    @ColumnInfo(name = "rifle") var rifle: String,
     @ColumnInfo(name = "prefFile") var prefFile: String,
     @ColumnInfo(name = "show", defaultValue = "true") var show: Boolean
 )

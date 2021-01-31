@@ -22,9 +22,5 @@ class ActivityInformation : AppCompatActivity() {
 
         // Set title
         supportActionBar?.title = getString(R.string.activityInformation_Title)
-
-        // Set subtitle
-        supportActionBar?.subtitle = getString(R.string.activityInformation_SubTitle)
     }
-
 }

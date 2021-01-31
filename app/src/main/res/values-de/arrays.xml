@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string-array name="activityRilfe_Weapons">
+        <item>Luftgewehr</item>
+        <item>Luftgewehr 3-Stellung</item>
+        <item>Lichtgewehr</item>
+        <item>Kleinkalibergewehr</item>
+        <item>Kleinkalibergewehr 3-Stellung</item>
+        <item>Luftpistole</item>
+        <item>Lichtpistole</item>
+    </string-array>
+
     <string-array name="activityDetails_InputKindPossibilities">
         <item>Einrichten</item>
         <item>Anschlagsaufbau</item>
         <item>Nullpunkt</item>
         <item>Atmung</item>
         <item>Zielen</item>
-        <item>Abziehen/ Druckverlauf</item>
+        <item>Abziehen/Druckverlauf</item>
         <item>Koordination</item>
         <item>Phasentraining</item>
         <item>Linksanschläge</item>

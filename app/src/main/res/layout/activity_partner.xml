@@ -30,7 +30,7 @@
                 android:id="@+id/activityPartner_Image1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="26dp"
+                android:layout_margin="15dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/ic_advertising_1" />
 
@@ -43,7 +43,7 @@
                 android:id="@+id/activityPartner_Image2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="26dp"
+                android:layout_margin="15dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/ic_advertising_2" />
 
@@ -56,7 +56,7 @@
                 android:id="@+id/activityPartner_Image3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="26dp"
+                android:layout_margin="15dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/ic_advertising_3" />
 
@@ -69,9 +69,9 @@
                 android:id="@+id/activityPartner_Image4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="26dp"
+                android:layout_margin="15dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/ic_advertising_5" />
+                android:src="@drawable/ic_advertising_4" />
 
             <View
                 android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                 android:id="@+id/activityPartner_Image5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="26dp"
+                android:layout_margin="15dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/ic_advertising_5" />
 
@@ -95,7 +95,7 @@
                 android:id="@+id/activityPartner_Image6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="26dp"
+                android:layout_margin="15dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/ic_advertising_6" />
 
@@ -107,7 +107,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="26dp"
+                android:layout_margin="15dp"
                 android:gravity="center"
                 android:text="@string/activityPartner_Info"
                 android:textSize="20sp"

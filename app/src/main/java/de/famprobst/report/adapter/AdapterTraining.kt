@@ -105,10 +105,11 @@ class AdapterTraining(
             }
 
             // Set click listener
-            itemView.setOnClickListener {
+            this.itemView.setOnClickListener {
                 clickListener.onItemClick(training)
             }
 
+            // Set the delete click listener
             this.delete.setOnClickListener {
                 clickListener.onItemDelete(training)
             }

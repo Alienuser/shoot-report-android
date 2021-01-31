@@ -21,7 +21,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
@@ -47,7 +47,25 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
     private lateinit var output: File
 
     // Input
-    lateinit var spinner: AutoCompleteTextView
+    private lateinit var layoutDetails: CoordinatorLayout
+    private lateinit var inputSpinnerLayout: TextInputLayout
+    private lateinit var inputSpinner: MaterialAutoCompleteTextView
+    private lateinit var inputPlace: TextInputLayout
+    private lateinit var inputDate: TextInputLayout
+    private lateinit var inputPoints1: TextInputLayout
+    private lateinit var inputPoints2: TextInputLayout
+    private lateinit var inputPoints3: TextInputLayout
+    private lateinit var inputPoints4: TextInputLayout
+    private lateinit var inputPoints5: TextInputLayout
+    private lateinit var inputPoints6: TextInputLayout
+    private lateinit var inputReport: TextInputLayout
+    private lateinit var textPoints: TextView
+    private lateinit var buttonPhoto: Button
+    private lateinit var buttonQR: Button
+    private lateinit var buttonShare: Button
+    private lateinit var buttonSave: Button
+    private lateinit var imagePhoto: ImageView
+    private lateinit var imageDelete: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +74,7 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
         setContentView(R.layout.activity_details_competition)
 
         // Define toolbar
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         // Add back button to activity
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -75,9 +92,25 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
         val extras = intent.extras
 
         // Get all inputs
-        spinner = findViewById(R.id.activityCompetition_InputKindSpinner)
-
-        setupSpinner()
+        layoutDetails = findViewById(R.id.activity_details)
+        inputSpinnerLayout = findViewById(R.id.activityDetails_InputKindSpinnerLayout)
+        inputSpinner = findViewById(R.id.activityDetails_InputKindSpinner)
+        inputPlace = findViewById(R.id.activityDetails_InputPlace)
+        inputDate = findViewById(R.id.activityDetails_InputDate)
+        inputPoints1 = findViewById(R.id.activityDetails_InputPoints1)
+        inputPoints2 = findViewById(R.id.activityDetails_InputPoints2)
+        inputPoints3 = findViewById(R.id.activityDetails_InputPoints3)
+        inputPoints4 = findViewById(R.id.activityDetails_InputPoints4)
+        inputPoints5 = findViewById(R.id.activityDetails_InputPoints5)
+        inputPoints6 = findViewById(R.id.activityDetails_InputPoints6)
+        inputReport = findViewById(R.id.activityDetails_InputReport)
+        textPoints = findViewById(R.id.activityDetails_Points)
+        buttonPhoto = findViewById(R.id.activityDetails_ButtonPhoto)
+        buttonQR = findViewById(R.id.activityDetails_ButtonQR)
+        buttonShare = findViewById(R.id.activityDetails_ButtonShare)
+        buttonSave = findViewById(R.id.activityDetails_ButtonSave)
+        imagePhoto = findViewById(R.id.activityDetails_Photo)
+        imageDelete = findViewById(R.id.activityDetails_DeletePhoto)
 
         // Check what we have to do
         when {
@@ -89,22 +122,21 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
             }
         }
 
+        // Setup the spinner
+        setupSpinner()
+
         // Setup the date picker
         setupDatePicker()
 
         // Set onClickListener for qr button
-        findViewById<Button>(R.id.activityDetails_ButtonQR).setOnClickListener {
-            scanQR()
-        }
+        buttonQR.setOnClickListener { scanQR() }
 
         // Set onClickListener for photo button
-        findViewById<Button>(R.id.activityDetails_ButtonPhoto).setOnClickListener {
-            takePhoto()
-        }
+        buttonPhoto.setOnClickListener { takePhoto() }
 
         // Set onClickListener for delete photo button
-        findViewById<ImageView>(R.id.activityDetails_DeletePhoto).setOnClickListener {
-            if (findViewById<ImageView>(R.id.activityDetails_DeletePhoto).isClickable) {
+        imageDelete.setOnClickListener {
+            if (imageDelete.isClickable) {
                 val builder = AlertDialog.Builder(this@ActivityDetailsCompetition)
                 builder.setMessage(R.string.activityDetails_DeleteMessage)
                     .setCancelable(false)
@@ -118,25 +150,20 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
                 alert.show()
             }
         }
-        findViewById<ImageView>(R.id.activityDetails_DeletePhoto).isClickable = false
 
         // Set onClickListener for save button
-        findViewById<Button>(R.id.activityDetails_ButtonSave).setOnClickListener {
-            saveDetails()
-        }
+        buttonSave.setOnClickListener { saveDetails() }
 
         // Set onClickListener for share button
-        findViewById<Button>(R.id.activityDetails_ButtonShare).setOnClickListener {
-            shareDetails()
-        }
+        buttonShare.setOnClickListener { shareDetails() }
 
         // Calculation
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.doAfterTextChanged { this.calculatePoints() }
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints1.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints2.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints3.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints4.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints5.editText?.doAfterTextChanged { this.calculatePoints() }
+        inputPoints6.editText?.doAfterTextChanged { this.calculatePoints() }
 
         // Calculate for the first time
         this.calculatePoints()
@@ -155,10 +182,6 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
                 this.switchEditable()
                 true
             }
-            android.R.id.home -> {
-                finish()
-                true
-            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -174,8 +197,8 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
             android.R.layout.simple_spinner_item
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.setAdapter(adapter)
-        spinner.onItemClickListener = this
+        inputSpinner.setAdapter(adapter)
+        inputSpinner.onItemClickListener = this
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -191,14 +214,10 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
 
                 val myFormat = "dd.MM.yyyy"
                 val sdf = SimpleDateFormat(myFormat, Locale.GERMAN)
-                findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText?.setText(
-                    sdf.format(
-                        cal.time
-                    )
-                )
+                inputDate.editText?.setText(sdf.format(cal.time))
             }
 
-        findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText?.setOnTouchListener { p0, event ->
+        inputDate.editText?.setOnTouchListener { p0, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 DatePickerDialog(
                     p0.context, dateSetListener,
@@ -219,9 +238,7 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
         supportActionBar?.title = getString(R.string.activityDetails_AddCompetition)
 
         // Set default date
-        findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText?.setText(
-            SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
-        )
+        inputDate.editText?.setText(SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN).format(date))
 
         // Set variables
         this.newEntry = true
@@ -241,108 +258,60 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
             this.modelCompetition = competition
 
             // Set data
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPlace).editText?.setText(
-                competition.place
-            )
-            spinner.setText(competition.kind)
+            inputPlace.editText?.setText(competition.place)
+            inputSpinner.setText(competition.kind)
             competitionKind = competition.kind
             date = competition.date
-            findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText?.setText(
-                SimpleDateFormat("dd.MM.yyyy").format(competition.date)
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.setText(
-                competition.shoots[0].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.setText(
-                competition.shoots[1].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.setText(
-                competition.shoots[2].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.setText(
-                competition.shoots[3].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.setText(
-                competition.shoots[4].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.setText(
-                competition.shoots[5].toString()
-            )
-            findViewById<TextInputLayout>(R.id.activityDetails_InputReport).editText?.setText(
-                competition.report
-            )
+            inputDate.editText?.setText(SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN).format(date))
+            inputPoints1.editText?.setText(competition.shoots[0].toString())
+            inputPoints2.editText?.setText(competition.shoots[1].toString())
+            inputPoints3.editText?.setText(competition.shoots[2].toString())
+            inputPoints4.editText?.setText(competition.shoots[3].toString())
+            inputPoints5.editText?.setText(competition.shoots[4].toString())
+            inputPoints6.editText?.setText(competition.shoots[5].toString())
+            inputReport.editText?.setText(competition.report)
+
             if (competition.image.isNotEmpty()) {
-                findViewById<ImageView>(R.id.activityDetails_Photo).setImageBitmap(
+                imagePhoto.setImageBitmap(
                     BitmapFactory.decodeByteArray(
                         competition.image,
                         0,
                         competition.image.size
                     ) as Bitmap
                 )
-                findViewById<ImageView>(R.id.activityDetails_DeletePhoto).visibility = View.VISIBLE
+                imageDelete.visibility = View.VISIBLE
                 competitionImage = competition.image
             }
         })
     }
 
     private fun saveDetails() {
+        // Get the current competition model
+        val competitionModel = ViewModelProvider(this).get(ModelCompetition::class.java)
 
-        // Check what we have to save
+        val entryCompetition = EntryCompetition(
+            date,
+            inputPlace.editText?.text.toString(),
+            competitionKind,
+            listOf(
+                inputPoints1.editText?.text.toString().toDouble(),
+                inputPoints2.editText?.text.toString().toDouble(),
+                inputPoints3.editText?.text.toString().toDouble(),
+                inputPoints4.editText?.text.toString().toDouble(),
+                inputPoints5.editText?.text.toString().toDouble(),
+                inputPoints6.editText?.text.toString().toDouble()
+            ),
+            competitionImage,
+            inputReport.editText?.text.toString(),
+            rifleId
+        )
+
+        // Save ot update the entry
         if (this.newEntry) {
-
-            // Save data
-            val competitionModel = ViewModelProvider(this).get(ModelCompetition::class.java)
-
-            competitionModel.insert(
-                EntryCompetition(
-                    0,
-                    date,
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPlace).editText?.text.toString(),
-                    competitionKind,
-                    listOf(
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.text.toString()
-                            .toDouble(),
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.text.toString()
-                            .toDouble(),
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.text.toString()
-                            .toDouble(),
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.text.toString()
-                            .toDouble(),
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.text.toString()
-                            .toDouble(),
-                        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.text.toString()
-                            .toDouble()
-                    ),
-                    competitionImage,
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputReport).editText?.text.toString(),
-                    rifleId
-                )
-            )
+            competitionModel.insert(entryCompetition)
         } else {
-            this.modelCompetition.date = date
-            this.modelCompetition.place =
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPlace).editText?.text.toString()
-            this.modelCompetition.kind = competitionKind
-            this.modelCompetition.shoots =
-                listOf(
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.text.toString()
-                        .toDouble(),
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.text.toString()
-                        .toDouble(),
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.text.toString()
-                        .toDouble(),
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.text.toString()
-                        .toDouble(),
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.text.toString()
-                        .toDouble(),
-                    findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.text.toString()
-                        .toDouble()
-                )
-            this.modelCompetition.image = competitionImage
-            this.modelCompetition.report =
-                findViewById<TextInputLayout>(R.id.activityDetails_InputReport).editText?.text.toString()
-
-            val competitionModel = ViewModelProvider(this).get(ModelCompetition::class.java)
+            entryCompetition.id = this.modelCompetition.id
+            this.modelCompetition = entryCompetition
             competitionModel.update(this.modelCompetition)
         }
 
@@ -351,39 +320,25 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
     }
 
     private fun switchEditable() {
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPlace).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPlace).editText!!.isEnabled)
-        findViewById<MaterialAutoCompleteTextView>(R.id.activityCompetition_InputKindSpinner).isEnabled =
-            !(findViewById<MaterialAutoCompleteTextView>(R.id.activityCompetition_InputKindSpinner).isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputDate).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText!!.isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText!!.isEnabled)
-        findViewById<Button>(R.id.activityDetails_ButtonPhoto).isEnabled =
-            !(findViewById<Button>(R.id.activityDetails_ButtonPhoto).isEnabled)
-        findViewById<Button>(R.id.activityDetails_ButtonQR).isEnabled =
-            !(findViewById<Button>(R.id.activityDetails_ButtonQR).isEnabled)
-        findViewById<TextInputLayout>(R.id.activityDetails_InputReport).editText?.isEnabled =
-            !(findViewById<TextInputLayout>(R.id.activityDetails_InputReport).editText!!.isEnabled)
-        findViewById<Button>(R.id.activityDetails_ButtonSave).isEnabled =
-            !(findViewById<Button>(R.id.activityDetails_ButtonSave).isEnabled)
-        findViewById<ImageView>(R.id.activityDetails_DeletePhoto).isClickable =
-            !(findViewById<ImageView>(R.id.activityDetails_DeletePhoto).isClickable)
+        inputPlace.isEnabled = !inputPlace.isEnabled
+        inputSpinnerLayout.isEnabled = !inputSpinnerLayout.isEnabled
+        inputDate.isEnabled = !inputDate.isEnabled
+        inputPoints1.isEnabled = !inputPoints1.isEnabled
+        inputPoints2.isEnabled = !inputPoints2.isEnabled
+        inputPoints3.isEnabled = !inputPoints3.isEnabled
+        inputPoints4.isEnabled = !inputPoints4.isEnabled
+        inputPoints5.isEnabled = !inputPoints5.isEnabled
+        inputPoints6.isEnabled = !inputPoints6.isEnabled
+        inputReport.isEnabled = !inputReport.isEnabled
+        buttonSave.isEnabled = !buttonSave.isEnabled
+        buttonPhoto.isEnabled = !buttonPhoto.isEnabled
+        buttonQR.isEnabled = !buttonQR.isEnabled
+        imageDelete.isClickable = !imageDelete.isClickable
     }
 
     private fun scanQR() {
         Snackbar.make(
-            findViewById(R.id.activity_details),
+            layoutDetails,
             getText(R.string.activityDetails_InfoQR),
             Snackbar.LENGTH_LONG
         ).show()
@@ -396,7 +351,7 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
 
         val takePhotoIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         val dir: File = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
-        output = File(dir, "competitionTraining.jpeg")
+        output = File(dir, "activityCompetition.jpeg")
         takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(output))
 
         val chooserIntent = Intent.createChooser(
@@ -412,11 +367,10 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
         if (resultCode == Activity.RESULT_OK && requestCode == 200) {
             if (data?.data != null) {
                 // Single image
-                findViewById<ImageView>(R.id.activityDetails_Photo).setImageURI(data.data)
+                imagePhoto.setImageURI(data.data)
 
                 // Save image
-                val bitmap =
-                    (findViewById<ImageView>(R.id.activityDetails_Photo).drawable as BitmapDrawable).bitmap
+                val bitmap = (imagePhoto.drawable as BitmapDrawable).bitmap
                 val stream = ByteArrayOutputStream()
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
                 competitionImage = stream.toByteArray()
@@ -428,16 +382,16 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
                         Uri.fromFile(output)
                     ), 90f
                 )
-                findViewById<ImageView>(R.id.activityDetails_Photo).setImageURI(null)
-                findViewById<ImageView>(R.id.activityDetails_Photo).setImageBitmap(bitmap)
+                imagePhoto.setImageURI(null)
+                imagePhoto.setImageBitmap(bitmap)
 
                 // Save image
                 val stream = ByteArrayOutputStream()
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 80, stream)
                 competitionImage = stream.toByteArray()
             }
-            findViewById<ImageView>(R.id.activityDetails_DeletePhoto).visibility = View.VISIBLE
-            findViewById<ImageView>(R.id.activityDetails_DeletePhoto).isClickable = true
+            imageDelete.visibility = View.VISIBLE
+            imageDelete.isClickable = true
         }
     }
 
@@ -450,64 +404,34 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
     }
 
     private fun deletePhoto() {
-        findViewById<ImageView>(R.id.activityDetails_Photo).setImageDrawable(null)
-        findViewById<ImageView>(R.id.activityDetails_DeletePhoto).visibility = View.GONE
+        imagePhoto.setImageDrawable(null)
+        imageDelete.visibility = View.GONE
         competitionImage = byteArrayOf()
     }
 
     private fun shareDetails() {
         Snackbar.make(
-            findViewById(R.id.activity_details),
+            layoutDetails,
             getText(R.string.activityDetails_InfoShare),
             Snackbar.LENGTH_LONG
         ).show()
     }
 
     private fun calculatePoints() {
+        // Add all points to list
         val points: MutableList<Double> = mutableListOf()
-
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints1).editText?.text.toString()
-                    .toDouble()
-            )
-        }
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints2).editText?.text.toString()
-                    .toDouble()
-            )
-        }
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints3).editText?.text.toString()
-                    .toDouble()
-            )
-        }
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints4).editText?.text.toString()
-                    .toDouble()
-            )
-        }
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints5).editText?.text.toString()
-                    .toDouble()
-            )
-        }
-        if (!findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.text.isNullOrEmpty()) {
-            points.add(
-                findViewById<TextInputLayout>(R.id.activityDetails_InputPoints6).editText?.text.toString()
-                    .toDouble()
-            )
-        }
+        points.add(inputPoints1.editText?.text?.toString()!!.toDouble())
+        points.add(inputPoints2.editText?.text?.toString()!!.toDouble())
+        points.add(inputPoints3.editText?.text?.toString()!!.toDouble())
+        points.add(inputPoints4.editText?.text?.toString()!!.toDouble())
+        points.add(inputPoints5.editText?.text?.toString()!!.toDouble())
+        points.add(inputPoints6.editText?.text?.toString()!!.toDouble())
 
         // Set value
         if (points.sum().rem(1).equals(0.0)) {
-            findViewById<TextView>(R.id.activityDetails_Points).text = "%.0f".format(points.sum())
+            textPoints.text = "%.0f".format(points.sum())
         } else {
-            findViewById<TextView>(R.id.activityDetails_Points).text = "%.1f".format(points.sum())
+            textPoints.text = "%.1f".format(points.sum())
         }
     }
 }

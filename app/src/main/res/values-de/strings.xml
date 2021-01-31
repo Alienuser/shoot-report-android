@@ -36,7 +36,6 @@
 
     <!-- Activity Information -->
     <string name="activityInformation_Title">Informationen</string>
-    <string name="activityInformation_SubTitle">Hier findest du Informationen zur App</string>
 
     <!-- Activity Partner -->
     <string name="activityPartner_Title">Unsere Partner</string>
@@ -139,9 +138,9 @@
     <string name="fragmentPlan_TabDuring">Schussablauf</string>
     <string name="fragmentPlan_header">Mein Ablauf vor dem Wettkampf</string>
     <string name="fragmentPlanShoot_header">Mein Ablauf für den Schuss</string>
-    <string name="fragmentPlan_beforeSummary">Hier kannst du definieren, was du vor dem Tag machst.</string>
+    <string name="fragmentPlan_beforeSummary">Hier kannst du definieren, was du als ideale Vorbereitung machst.</string>
     <string name="fragmentPlan_beforeText">Vorbereitung</string>
-    <string name="fragmentPlan_duringSummary">Hier kannst du definieren, was du während dem Tag machst.</string>
+    <string name="fragmentPlan_duringSummary">Hier kannst du deinen idealen Schussablauf festhalten.</string>
     <string name="fragmentPlan_duringText">Schussablauf</string>
 
     <!-- Fragment Person -->
@@ -149,7 +148,7 @@
     <string name="fragmentPerson_InputName">Name</string>
     <string name="fragmentPerson_InputAge">Alter</string>
     <string name="fragmentPerson_InputSize">Größe</string>
-    <string name="fragmentPerson_InputPerformance">Bestenleistung</string>
+    <string name="fragmentPerson_InputPerformance">Bestleistung</string>
     <string name="fragmentPerson_InputAssociation1">1. Verein</string>
     <string name="fragmentPerson_InputAssociation2">2. Verein</string>
     <string name="fragmentPerson_InputTrainer">Trainer</string>
@@ -171,6 +170,8 @@
     <string name="fragmentInformation_WebsiteTitle">Webseite</string>
     <string name="fragmentInformation_TitleVersion">Informationen über die Version</string>
     <string name="fragmentInformation_VersionTitle">Version</string>
+    <string name="fragmentInformation_TitleSource">Quellenangaben</string>
+    <string name="fragmentInformation_SourceTitle">Texte der Trainerfunktion sind in Anlehnung der Trainer-C Breitensportausbildung des Deutschen Schützenbundes.</string>
 
     <!-- Fragment Trainer Equipment -->
     <string name="fragmentTrainerEquipment_TabCloth">Kleidung</string>

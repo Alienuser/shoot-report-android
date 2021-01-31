@@ -39,7 +39,7 @@ object HelperRepeat {
             3 -> view.findViewById<ImageView>(R.id.ads)
                 .setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_advertising_3))
             4 -> view.findViewById<ImageView>(R.id.ads)
-                .setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_advertising_5))
+                .setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_advertising_4))
             5 -> view.findViewById<ImageView>(R.id.ads)
                 .setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_advertising_5))
         }

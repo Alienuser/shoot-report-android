@@ -42,12 +42,11 @@
 
     <!-- Activity Information -->
     <string name="activityInformation_Title">Information</string>
-    <string name="activityInformation_SubTitle">Here you can find information about the app.</string>
 
     <!-- Activity Partner -->
     <string name="activityPartner_Title">Partner</string>
-    <string name="activityPartner_Headline">Wir sagen DANKE!</string>
-    <string name="activityPartner_Info">Werden Sie jetzt Partner von uns.</string>
+    <string name="activityPartner_Headline">We say THANK YOU!</string>
+    <string name="activityPartner_Info">Become a partner of us now.</string>
     <string name="activityPartner_Button">Contact</string>
 
     <!-- Activity Details -->
@@ -56,7 +55,7 @@
     <string name="activityDetails_EditTraining">Edit training</string>
     <string name="activityDetails_EditCompetition">Edit competition</string>
     <string name="activityDetails_CompetitionInputPlace">Where was your competition?</string>
-    <string name="activityDetails_CompetitionInputKind">In which mode did you shoot?</string>
+    <string name="activityDetails_CompetitionInputKind">Which mode did you shoot?</string>
     <string name="activityDetails_InputKind">What did you train?</string>
     <string name="activityDetails_InputPlace">Where did you train?</string>
     <string name="activityDetails_InputDate">Date</string>
@@ -103,6 +102,7 @@
     <string name="fragmentTraining_DeleteMessage">Are you sure you want to delete the training?</string>
     <string name="fragmentTraining_DeleteMessageYes">Yes</string>
     <string name="fragmentTraining_DeleteMessageNo">No</string>
+    <string name="fragmentTraining_SeriesDefault" translatable="false">0</string>
 
     <!-- Fragment Training Statistics -->
     <string name="fragmentTrainingStatistics_TitleComplete">\u00D8 Shot whole rings</string>
@@ -117,6 +117,7 @@
     <string name="fragmentCompetition_DeleteMessage">Are you sure you want to delete the competition?</string>
     <string name="fragmentCompetition_DeleteMessageYes">Yes</string>
     <string name="fragmentCompetition_DeleteMessageNo">No</string>
+    <string name="fragmentCompetition_SeriesDefault" translatable="false">0</string>
 
     <!-- Fragment Competition Statistics -->
     <string name="fragmentCompetitionStatistics_TitleComplete">Competition whole rings</string>
@@ -145,25 +146,25 @@
     <string name="fragmentPlan_TabDuring">Shot sequence</string>
     <string name="fragmentPlan_header">My procedure before competition</string>
     <string name="fragmentPlanShoot_header">My procedure for the shot</string>
-    <string name="fragmentPlan_beforeSummary">Here you can define what you can do before the day.</string>
+    <string name="fragmentPlan_beforeSummary">Here you can define what you do as ideal preparation.</string>
     <string name="fragmentPlan_beforeText">Preparation</string>
-    <string name="fragmentPlan_duringSummary">Here you can define what you do during the day.</string>
+    <string name="fragmentPlan_duringSummary">Here you can note your ideal shot sequence.</string>
     <string name="fragmentPlan_duringText">Shot sequence</string>
 
     <!-- Fragment Person -->
-    <string name="fragmentPerson_Header">Schütze</string>
+    <string name="fragmentPerson_Header">Shooter</string>
     <string name="fragmentPerson_InputName">Name</string>
-    <string name="fragmentPerson_InputAge">Alter</string>
-    <string name="fragmentPerson_InputSize">Größe</string>
-    <string name="fragmentPerson_InputPerformance">Bestenleistung</string>
-    <string name="fragmentPerson_InputAssociation1">1. Verein</string>
-    <string name="fragmentPerson_InputAssociation2">2. Verein</string>
-    <string name="fragmentPerson_InputTrainer">Trainer</string>
-    <string name="fragmentPerson_InputTrainerMail">E-Mail Trainer</string>
-    <string name="fragmentPerson_InputSquad">Kadertrainer</string>
-    <string name="fragmentPerson_InputSquadMail">E-Mail Kadertrainer</string>
-    <string name="fragmentPerson_ButtonSave">Daten speichern</string>
-    <string name="fragmentPerson_SaveSuccessful">Daten erfolgreich gespeichert.</string>
+    <string name="fragmentPerson_InputAge">Age</string>
+    <string name="fragmentPerson_InputSize">Height</string>
+    <string name="fragmentPerson_InputPerformance">Best Performance</string>
+    <string name="fragmentPerson_InputAssociation1">1. Club</string>
+    <string name="fragmentPerson_InputAssociation2">2. Club</string>
+    <string name="fragmentPerson_InputTrainer">Coach</string>
+    <string name="fragmentPerson_InputTrainerMail">E-Mail Coach</string>
+    <string name="fragmentPerson_InputSquad">Squad Coach</string>
+    <string name="fragmentPerson_InputSquadMail">E-Mail Squad Coach</string>
+    <string name="fragmentPerson_ButtonSave">Save Data</string>
+    <string name="fragmentPerson_SaveSuccessful">Data saved successfully.</string>
 
     <!-- Fragment Device -->
     <string name="fragmentDataDevice_header">My settings on the equipment</string>
@@ -178,9 +179,11 @@
     <string name="fragmentInformation_WebsiteValue" translatable="false">www.burkhardt-sport.solutions</string>
     <string name="fragmentInformation_TitleVersion">Information about the version</string>
     <string name="fragmentInformation_VersionTitle">Version</string>
-    <string name="fragmentInformation_VersionValue" translatable="false">0.7 Release</string>
+    <string name="fragmentInformation_VersionValue" translatable="false">1.0 Release</string>
     <string name="fragmentInformation_BuildTitle" translatable="false">Build</string>
-    <string name="fragmentInformation_BuildValue" translatable="false">20201219</string>
+    <string name="fragmentInformation_BuildValue" translatable="false">31012021</string>
+    <string name="fragmentInformation_TitleSource">Sources</string>
+    <string name="fragmentInformation_SourceTitle">Texts of the trainer function are in accordance with the Trainer-C mass sports training of the \"Deustchen Schützenbundes\".</string>
 
     <!-- Fragment Trainer Equipment -->
     <string name="fragmentTrainerEquipment_TabCloth">Clothes</string>
@@ -188,7 +191,7 @@
     <string name="fragmentTrainerEquipment_TabEquipment">Accessories</string>
 
     <!-- Fragment Trainer Tech -->
-    <string name="fragmentTrainerTech_TabAttack">Attack</string>
+    <string name="fragmentTrainerTech_TabAttack">Positioning</string>
     <string name="fragmentTrainerTech_TabDestination">Procedure</string>
 
     <!-- Fragment Trainer Mental -->

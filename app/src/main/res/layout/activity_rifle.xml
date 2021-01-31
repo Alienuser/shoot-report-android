@@ -8,7 +8,9 @@
     android:background="?android:attr/selectableItemBackground"
     android:fitsSystemWindows="true">
 
-    <include layout="@layout/toolbar" />
+    <include
+        android:id="@+id/activityRifle_toolbar"
+        layout="@layout/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activityRifle_list"

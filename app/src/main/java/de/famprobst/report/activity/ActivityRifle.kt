@@ -8,31 +8,31 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import de.famprobst.report.R
 import de.famprobst.report.adapter.AdapterRifle
+import de.famprobst.report.databinding.ActivityRifleBinding
 import de.famprobst.report.entity.EntryRifle
 import de.famprobst.report.helper.HelperRepeat
 import de.famprobst.report.model.ModelRifle
 
 class ActivityRifle : AppCompatActivity() {
 
+    private lateinit var binding: ActivityRifleBinding
     private lateinit var rifleModel: ModelRifle
     private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Define layout
-        setContentView(R.layout.activity_rifle)
+        // Inflate the layout
+        binding = ActivityRifleBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Define toolbar
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.activityRifleToolbar.toolbar)
 
         // Get shared prefs
         sharedPref = this.getSharedPreferences(
@@ -87,24 +87,31 @@ class ActivityRifle : AppCompatActivity() {
 
         // Set variables
         val recyclerAdapter = AdapterRifle(emptyList(), listener)
-        val recyclerView = findViewById<RecyclerView>(R.id.activityRifle_list)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = recyclerAdapter
-        recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+
+        // Set the list
+        binding.activityRifleList.layoutManager = LinearLayoutManager(this)
+        binding.activityRifleList.adapter = recyclerAdapter
+        binding.activityRifleList.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                LinearLayoutManager.VERTICAL
+            )
+        )
 
         // Setup model and listener
         rifleModel = ViewModelProvider(this).get(ModelRifle::class.java)
         rifleModel.allRifles.observe(this, { rifles ->
             recyclerAdapter.addRifle(rifles)
         })
-
-        //rifleModel.insert(EntryRifle(0, "Test 1", "Description 1", "preference_rifle_1"))
     }
 
     private fun startActivityMain(element: EntryRifle) {
         // Save some sharedPrefs
         with(sharedPref.edit()) {
-            putString(getString(R.string.preferenceReportRifleName), element.rifle)
+            putString(
+                getString(R.string.preferenceReportRifleName),
+                baseContext.resources.getStringArray(R.array.activityRilfe_Weapons)[element.id - 1]
+            )
             putInt(getString(R.string.preferenceReportRifleId), element.id)
             commit()
         }

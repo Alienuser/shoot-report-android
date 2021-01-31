@@ -64,10 +64,11 @@ class AdapterCompetition(
             )
 
             // Set click listener
-            itemView.setOnClickListener {
+            this.itemView.setOnClickListener {
                 clickListener.onItemClick(competition)
             }
 
+            // Set the delete click listener
             this.delete.setOnClickListener {
                 clickListener.onItemDelete(competition)
             }

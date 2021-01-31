@@ -12,6 +12,14 @@ import de.famprobst.report.R
 
 class ActivityPartner : AppCompatActivity() {
 
+    private lateinit var imageAd1: ImageView
+    private lateinit var imageAd2: ImageView
+    private lateinit var imageAd3: ImageView
+    private lateinit var imageAd4: ImageView
+    private lateinit var imageAd5: ImageView
+    private lateinit var imageAd6: ImageView
+    private lateinit var button: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,13 +36,32 @@ class ActivityPartner : AppCompatActivity() {
         // Set title
         supportActionBar?.title = getString(R.string.activityPartner_Title)
 
+        // Get all views
+        imageAd1 = findViewById(R.id.activityPartner_Image1)
+        imageAd2 = findViewById(R.id.activityPartner_Image2)
+        imageAd3 = findViewById(R.id.activityPartner_Image3)
+        imageAd4 = findViewById(R.id.activityPartner_Image4)
+        imageAd5 = findViewById(R.id.activityPartner_Image5)
+        imageAd6 = findViewById(R.id.activityPartner_Image6)
+        button = findViewById(R.id.activityPartner_Button)
+
+        // Set all links
+        setupPartnerLinks()
+    }
+
+    private fun setupPartnerLinks() {
         // Feinwerkbau
-        findViewById<ImageView>(R.id.activityPartner_Image1).setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.feinwerkbau.de")))
+        imageAd1.setOnClickListener {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://www.feinwerkbau.de")
+                )
+            )
         }
 
         // Sauer
-        findViewById<ImageView>(R.id.activityPartner_Image2).setOnClickListener {
+        imageAd2.setOnClickListener {
             startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
@@ -44,17 +71,17 @@ class ActivityPartner : AppCompatActivity() {
         }
 
         // Markus Koch
-        findViewById<ImageView>(R.id.activityPartner_Image3).setOnClickListener {
+        imageAd3.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://coaching-koch.de/")))
         }
 
         // Disag
-        findViewById<ImageView>(R.id.activityPartner_Image4).setOnClickListener {
+        imageAd4.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.disag.de/")))
         }
 
         // Tec-Hro
-        findViewById<ImageView>(R.id.activityPartner_Image5).setOnClickListener {
+        imageAd5.setOnClickListener {
             startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
@@ -64,12 +91,12 @@ class ActivityPartner : AppCompatActivity() {
         }
 
         // KKSV
-        findViewById<ImageView>(R.id.activityPartner_Image6).setOnClickListener {
+        imageAd6.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.kksvillingen.de/")))
         }
 
         // Contact
-        findViewById<Button>(R.id.activityPartner_Button).setOnClickListener {
+        button.setOnClickListener {
             startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
@@ -78,5 +105,4 @@ class ActivityPartner : AppCompatActivity() {
             )
         }
     }
-
 }
