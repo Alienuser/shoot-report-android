@@ -34,13 +34,6 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/topMenuDonate"
-        android:actionLayout="@layout/toolbar"
-        android:orderInCategory="500"
-        android:title="@string/topMenuDonate"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/topMenuPartner"
         android:actionLayout="@layout/toolbar"
         android:orderInCategory="600"

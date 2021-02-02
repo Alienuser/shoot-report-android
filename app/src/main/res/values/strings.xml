@@ -20,7 +20,6 @@
     <string name="topMenuExport">Export</string>
     <string name="topMenuData">Master data</string>
     <string name="topMenuInfo">Information</string>
-    <string name="topMenuDonate">Donate</string>
     <string name="topMenuPartner">Partner</string>
 
     <!-- Menu top -->
@@ -179,7 +178,7 @@
     <string name="fragmentInformation_WebsiteValue" translatable="false">www.burkhardt-sport.solutions</string>
     <string name="fragmentInformation_TitleVersion">Information about the version</string>
     <string name="fragmentInformation_VersionTitle">Version</string>
-    <string name="fragmentInformation_VersionValue" translatable="false">1.0 Release</string>
+    <string name="fragmentInformation_VersionValue" translatable="false">1.1 Release</string>
     <string name="fragmentInformation_BuildTitle" translatable="false">Build</string>
     <string name="fragmentInformation_BuildValue" translatable="false">31012021</string>
     <string name="fragmentInformation_TitleSource">Sources</string>

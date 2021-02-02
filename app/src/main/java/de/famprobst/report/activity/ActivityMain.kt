@@ -3,7 +3,6 @@ package de.famprobst.report.activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -96,15 +95,6 @@ class ActivityMain : AppCompatActivity() {
             }
             R.id.topMenuInfo -> {
                 startActivity(Intent(this, ActivityInformation::class.java))
-                true
-            }
-            R.id.topMenuDonate -> {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("https://www.paypal.com/paypalme/shootreport/5")
-                    )
-                )
                 true
             }
             R.id.topMenuPartner -> {
