@@ -19,17 +19,25 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/topMenuExport"
+        android:id="@+id/topMenuExportTraining"
         android:actionLayout="@layout/toolbar"
         android:orderInCategory="300"
-        android:title="@string/topMenuExport"
+        android:title="@string/topMenuExportTraining"
+        android:visible="false"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/topMenuExportCompetition"
+        android:actionLayout="@layout/toolbar"
+        android:orderInCategory="400"
+        android:title="@string/topMenuExportCompetition"
         android:visible="false"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/topMenuInfo"
         android:actionLayout="@layout/toolbar"
-        android:orderInCategory="400"
+        android:orderInCategory="500"
         android:title="@string/topMenuInfo"
         app:showAsAction="never" />
 

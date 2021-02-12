@@ -25,7 +25,6 @@ class FragmentPerson : Fragment() {
     private lateinit var textName: TextInputEditText
     private lateinit var textAge: TextInputEditText
     private lateinit var textSize: TextInputEditText
-    private lateinit var textPerformance: TextInputEditText
     private lateinit var textAssociation1: TextInputEditText
     private lateinit var textAssociation2: TextInputEditText
     private lateinit var textTrainer: TextInputEditText

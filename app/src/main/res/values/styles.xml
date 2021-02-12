@@ -13,7 +13,7 @@
     <style name="AppTheme" parent="AppTheme.Base" />
 
     <!-- SplashScreen -->
-    <style name="AppTheme.SplashScreen" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+    <style name="AppTheme.SplashScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
 

@@ -1,6 +1,7 @@
 package de.famprobst.report.adapter
 
 import android.graphics.Color
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -73,7 +74,9 @@ class AdapterTraining(
                         0,
                         0
                     )
-                    this.points.compoundDrawablesRelative[0].setTint(Color.RED)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        this.points.compoundDrawablesRelative[0].setTint(Color.RED)
+                    }
                 }
                 1 -> {
                     this.points.setCompoundDrawablesRelativeWithIntrinsicBounds(
@@ -82,7 +85,9 @@ class AdapterTraining(
                         0,
                         0
                     )
-                    this.points.compoundDrawablesRelative[0].setTint(Color.RED)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        this.points.compoundDrawablesRelative[0].setTint(Color.RED)
+                    }
                 }
                 2 -> {
                     this.points.setCompoundDrawablesRelativeWithIntrinsicBounds(
@@ -91,7 +96,9 @@ class AdapterTraining(
                         0,
                         0
                     )
-                    this.points.compoundDrawablesRelative[0].setTint(Color.GREEN)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        this.points.compoundDrawablesRelative[0].setTint(Color.GREEN)
+                    }
                 }
                 3 -> {
                     this.points.setCompoundDrawablesRelativeWithIntrinsicBounds(
@@ -100,7 +107,9 @@ class AdapterTraining(
                         0,
                         0
                     )
-                    this.points.compoundDrawablesRelative[0].setTint(Color.GREEN)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        this.points.compoundDrawablesRelative[0].setTint(Color.GREEN)
+                    }
                 }
             }
 

@@ -31,7 +31,5 @@ class FragmentProcedureBefore : PreferenceFragmentCompat() {
                 // Set the preference layout
                 setPreferencesFromResource(R.xml.preferences_plan_before, rootKey)
             })
-
-
     }
 }

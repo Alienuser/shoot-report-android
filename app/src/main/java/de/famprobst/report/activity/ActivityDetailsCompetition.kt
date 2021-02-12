@@ -22,6 +22,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.content.FileProvider
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
@@ -29,6 +30,7 @@ import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 import de.famprobst.report.R
 import de.famprobst.report.entity.EntryCompetition
+import de.famprobst.report.helper.HelperShare
 import de.famprobst.report.model.ModelCompetition
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -289,7 +291,7 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
         // Get the current competition model
         val competitionModel = ViewModelProvider(this).get(ModelCompetition::class.java)
 
-        val entryCompetition = EntryCompetition(
+        val modelCompetitionNew = EntryCompetition(
             date,
             inputPlace.editText?.text.toString(),
             competitionKind,
@@ -308,14 +310,21 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
 
         // Save ot update the entry
         if (this.newEntry) {
-            competitionModel.insert(entryCompetition)
+            competitionModel.insert(modelCompetitionNew)
         } else {
-            entryCompetition.id = this.modelCompetition.id
-            this.modelCompetition = entryCompetition
+            modelCompetitionNew.id = this.modelCompetition.id
+            this.modelCompetition = modelCompetitionNew
             competitionModel.update(this.modelCompetition)
         }
 
-        // Exit the activity
+        // Entry saved successful
+        Snackbar.make(
+            layoutDetails,
+            getText(R.string.activityDetails_SaveSuccess),
+            Snackbar.LENGTH_LONG
+        ).show()
+
+        // Close the activity
         finish()
     }
 
@@ -410,22 +419,56 @@ class ActivityDetailsCompetition : AppCompatActivity(), AdapterView.OnItemClickL
     }
 
     private fun shareDetails() {
-        Snackbar.make(
-            layoutDetails,
-            getText(R.string.activityDetails_InfoShare),
-            Snackbar.LENGTH_LONG
-        ).show()
+        // Check if the entry was saved first
+        if (this::modelCompetition.isInitialized && !inputPoints1.isEnabled) {
+            // Set the content
+            val sharePath = getExternalFilesDir(null)
+            val shareFile = HelperShare.shareCompetition(
+                modelCompetition,
+                sharedPref.getString(getString(R.string.preferenceReportRifleName), ""),
+                sharePath,
+                baseContext
+            )
+
+            // Share the csv
+            val fileURI = FileProvider.getUriForFile(this, "de.famprobst.report", shareFile)
+            val sharingIntent = Intent()
+            sharingIntent.action = Intent.ACTION_SEND
+            sharingIntent.type = "text/csv";
+            sharingIntent.putExtra(Intent.EXTRA_STREAM, fileURI)
+            sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(sharingIntent)
+        } else {
+            Snackbar.make(
+                layoutDetails,
+                getText(R.string.activityDetails_ShareError),
+                Snackbar.LENGTH_LONG
+            ).show()
+        }
     }
 
     private fun calculatePoints() {
         // Add all points to list
         val points: MutableList<Double> = mutableListOf()
-        points.add(inputPoints1.editText?.text?.toString()!!.toDouble())
-        points.add(inputPoints2.editText?.text?.toString()!!.toDouble())
-        points.add(inputPoints3.editText?.text?.toString()!!.toDouble())
-        points.add(inputPoints4.editText?.text?.toString()!!.toDouble())
-        points.add(inputPoints5.editText?.text?.toString()!!.toDouble())
-        points.add(inputPoints6.editText?.text?.toString()!!.toDouble())
+
+        if (inputPoints1.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints1.editText?.text.toString().toDouble())
+        }
+        if (inputPoints2.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints2.editText?.text.toString().toDouble())
+        }
+        if (inputPoints3.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints3.editText?.text.toString().toDouble())
+        }
+        if (inputPoints4.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints4.editText?.text.toString().toDouble())
+        }
+        if (inputPoints5.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints5.editText?.text.toString().toDouble())
+        }
+        if (inputPoints6.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints6.editText?.text.toString().toDouble())
+        }
 
         // Set value
         if (points.sum().rem(1).equals(0.0)) {

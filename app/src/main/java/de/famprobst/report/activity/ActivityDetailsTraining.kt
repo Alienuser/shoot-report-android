@@ -7,9 +7,7 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Matrix
+import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
@@ -19,6 +17,7 @@ import android.view.*
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.content.FileProvider
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
@@ -26,6 +25,7 @@ import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
 import de.famprobst.report.R
 import de.famprobst.report.entity.EntryTraining
+import de.famprobst.report.helper.HelperShare
 import de.famprobst.report.model.ModelTraining
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -330,7 +330,7 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
         }
 
         // Define the new object
-        val entryTraining = EntryTraining(
+        val modelTrainingNew = EntryTraining(
             date,
             inputPlace.editText?.text.toString(),
             trainingKind,
@@ -354,14 +354,21 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
 
         // Save ot update the entry
         if (this.newEntry) {
-            trainingModel.insert(entryTraining)
+            trainingModel.insert(modelTrainingNew)
         } else {
-            entryTraining.id = this.modelTraining.id
-            this.modelTraining = entryTraining
+            modelTrainingNew.id = this.modelTraining.id
+            this.modelTraining = modelTrainingNew
             trainingModel.update(this.modelTraining)
         }
 
-        // Exit the activity
+        // Entry saved successful
+        Snackbar.make(
+            layoutDetails,
+            getText(R.string.activityDetails_SaveSuccess),
+            Snackbar.LENGTH_LONG
+        ).show()
+
+        // Close the activity
         finish()
     }
 
@@ -464,25 +471,65 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
     }
 
     private fun shareDetails() {
-        Snackbar.make(
-            layoutDetails,
-            getText(R.string.activityDetails_InfoShare),
-            Snackbar.LENGTH_LONG
-        ).show()
+        // Check if the entry was saved first
+        if (this::modelTraining.isInitialized && !inputPoints1.isEnabled) {
+            // Set the content
+            val sharePath = getExternalFilesDir(null)
+            val shareFile = HelperShare.shareTraining(
+                modelTraining,
+                sharedPref.getString(getString(R.string.preferenceReportRifleName), ""),
+                sharePath,
+                baseContext
+            )
+
+            // Share the csv
+            val fileURI = FileProvider.getUriForFile(this, "de.famprobst.report", shareFile)
+            val sharingIntent = Intent()
+            sharingIntent.action = Intent.ACTION_SEND
+            sharingIntent.type = "text/csv";
+            sharingIntent.putExtra(Intent.EXTRA_STREAM, fileURI)
+            sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(sharingIntent)
+        } else {
+            Snackbar.make(
+                layoutDetails,
+                getText(R.string.activityDetails_ShareError),
+                Snackbar.LENGTH_LONG
+            ).show()
+        }
     }
 
     private fun calculatePoints() {
         // Add all points to list
         val points: MutableList<Double> = mutableListOf()
-        points.add(inputPoints1.editText?.text?.toString()!!.toDouble())
-        points.add(inputPoints2.editText?.text?.toString()!!.toDouble())
-        points.add(inputPoints3.editText?.text?.toString()!!.toDouble())
-        points.add(inputPoints4.editText?.text?.toString()!!.toDouble())
-        points.add(inputPoints5.editText?.text?.toString()!!.toDouble())
-        points.add(inputPoints6.editText?.text?.toString()!!.toDouble())
-        points.add(inputPoints7.editText?.text?.toString()!!.toDouble())
-        points.add(inputPoints8.editText?.text?.toString()!!.toDouble())
-        points.add(inputPoints9.editText?.text?.toString()!!.toDouble())
+
+        if (inputPoints1.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints1.editText?.text.toString().toDouble())
+        }
+        if (inputPoints2.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints2.editText?.text.toString().toDouble())
+        }
+        if (inputPoints3.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints3.editText?.text.toString().toDouble())
+        }
+        if (inputPoints4.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints4.editText?.text.toString().toDouble())
+        }
+        if (inputPoints5.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints5.editText?.text.toString().toDouble())
+        }
+        if (inputPoints6.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints6.editText?.text.toString().toDouble())
+        }
+        if (inputPoints7.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints7.editText?.text.toString().toDouble())
+        }
+        if (inputPoints8.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints8.editText?.text.toString().toDouble())
+        }
+        if (inputPoints9.editText?.text!!.isNotEmpty()) {
+            points.add(inputPoints9.editText?.text.toString().toDouble())
+        }
 
         // Set value
         if (points.sum().rem(1).equals(0.0)) {
@@ -492,7 +539,7 @@ class ActivityDetailsTraining : AppCompatActivity(), AdapterView.OnItemClickList
         }
 
         // Check what to show as average
-        if (inputCount.editText?.text?.toString() != "0") {
+        if (inputCount.editText?.text!!.isNotEmpty() && inputCount.editText?.text?.toString() != "0") {
             textAverage.text = getString(
                 R.string.activityDetails_Average,
                 "%.2f".format(

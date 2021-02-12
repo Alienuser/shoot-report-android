@@ -21,5 +21,4 @@ class HelperConverter {
 
     @TypeConverter
     fun jsonToList(value: String) = Gson().fromJson(value, Array<Double>::class.java).toList()
-
 }

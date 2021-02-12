@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
@@ -18,9 +19,11 @@ import de.famprobst.report.fragment.competition.FragmentCompetition
 import de.famprobst.report.fragment.goals.FragmentGoals
 import de.famprobst.report.fragment.procedure.FragmentProcedure
 import de.famprobst.report.fragment.training.FragmentTraining
+import de.famprobst.report.helper.HelperExport
 import de.famprobst.report.helper.HelperRepeat
 import de.famprobst.report.model.ModelCompetition
 import de.famprobst.report.model.ModelTraining
+import java.io.File
 
 
 class ActivityMain : AppCompatActivity() {
@@ -89,8 +92,12 @@ class ActivityMain : AppCompatActivity() {
                 startActivity(Intent(this, ActivityTrainer::class.java))
                 true
             }
-            R.id.topMenuExport -> {
-                exportDataToCSV()
+            R.id.topMenuExportTraining -> {
+                exportTrainingToCSV()
+                true
+            }
+            R.id.topMenuExportCompetition -> {
+                exportCompetitionToCSV()
                 true
             }
             R.id.topMenuInfo -> {
@@ -160,26 +167,65 @@ class ActivityMain : AppCompatActivity() {
         }
     }
 
-    private fun exportDataToCSV() {
-        val trainingModel = ViewModelProvider(this).get(ModelTraining::class.java)
+    private fun exportCompetitionToCSV() {
+        // Get the competition model
         val competitionModel = ViewModelProvider(this).get(ModelCompetition::class.java)
 
-        trainingModel.allTrainings(
-            sharedPref.getInt(
-                getString(R.string.preferenceReportRifleId),
-                0
-            )
-        ).observe(this, { trainings ->
-            println(trainings)
-        })
+        // Create the file
+        var exportFile = File(getExternalFilesDir(null), "exportCompetition.csv")
+        exportFile.delete()
+        exportFile.createNewFile()
 
-        competitionModel.allCompetitions(
-            sharedPref.getInt(
-                getString(R.string.preferenceReportRifleId),
-                0
-            )
-        ).observe(this, { competitions ->
-            println(competitions)
-        })
+        // Get all trainings
+        exportFile = HelperExport.getCompetition(
+            this,
+            exportFile,
+            competitionModel.allCompetitions(
+                sharedPref.getInt(
+                    getString(R.string.preferenceReportRifleId),
+                    0
+                )
+            ).value,
+            sharedPref.getString(getString(R.string.preferenceReportRifleName), ""),
+        )
+
+        // Open the share overlay
+        exportCSVFile(exportFile)
+    }
+
+    private fun exportTrainingToCSV() {
+        // Get the training model
+        val trainingModel = ViewModelProvider(this).get(ModelTraining::class.java)
+
+        // Create the file
+        var exportFile = File(getExternalFilesDir(null), "exportTraining.csv")
+        exportFile.delete()
+        exportFile.createNewFile()
+
+        // Get all trainings
+        exportFile = HelperExport.getTraining(
+            this,
+            exportFile,
+            trainingModel.allTrainings(
+                sharedPref.getInt(
+                    getString(R.string.preferenceReportRifleId),
+                    0
+                )
+            ).value,
+            sharedPref.getString(getString(R.string.preferenceReportRifleName), ""),
+        )
+
+        // Open the share overlay
+        exportCSVFile(exportFile)
+    }
+
+    private fun exportCSVFile(exportFile: File) {
+        val fileURI = FileProvider.getUriForFile(this, "de.famprobst.report", exportFile)
+        val sharingIntent = Intent()
+        sharingIntent.action = Intent.ACTION_SEND
+        sharingIntent.type = "text/csv";
+        sharingIntent.putExtra(Intent.EXTRA_STREAM, fileURI)
+        sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        startActivity(sharingIntent)
     }
 }
