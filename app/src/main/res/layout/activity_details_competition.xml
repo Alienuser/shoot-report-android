@@ -24,7 +24,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:enabled="false"
                 android:hint="@string/activityDetails_CompetitionInputKind">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -39,7 +38,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:enabled="false"
                 android:hint="@string/activityDetails_CompetitionInputPlace">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -53,7 +51,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:enabled="false"
                 android:hint="@string/activityDetails_InputDate">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -76,7 +73,6 @@
                     android:layout_marginStart="7dp"
                     android:layout_marginEnd="7dp"
                     android:layout_weight="1"
-                    android:enabled="false"
                     android:text="@string/activityDetails_ButtonPhoto" />
 
                 <Button
@@ -87,7 +83,6 @@
                     android:layout_marginStart="7dp"
                     android:layout_marginEnd="7dp"
                     android:layout_weight="1"
-                    android:enabled="false"
                     android:text="@string/activityDetails_ButtonQR" />
 
             </LinearLayout>
@@ -104,7 +99,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:enabled="false"
                     android:hint="@string/activityDetails_InputPoints1">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -123,7 +117,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:enabled="false"
                     android:hint="@string/activityDetails_InputPoints2">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -143,7 +136,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:enabled="false"
                     android:hint="@string/activityDetails_InputPoints3">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -156,7 +148,6 @@
                         android:text="@string/fragmentCompetition_SeriesDefault" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
 
             </LinearLayout>
 
@@ -172,7 +163,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:enabled="false"
                     android:hint="@string/activityDetails_InputPoints4">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -192,7 +182,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:enabled="false"
                     android:hint="@string/activityDetails_InputPoints5">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -212,7 +201,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:enabled="false"
                     android:hint="@string/activityDetails_InputPoints6">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -220,7 +208,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
-                        android:nextFocusDown="@id/activityDetails_EditInputPoints7"
                         android:selectAllOnFocus="true"
                         android:text="@string/fragmentCompetition_SeriesDefault" />
 
@@ -287,7 +274,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:enabled="false"
                 android:hint="@string/activityDetails_CompetitionInputReport">
 
                 <EditText
@@ -326,7 +312,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
                     android:layout_weight="1"
-                    android:enabled="false"
                     android:text="@string/activityDetails_ButtonSave" />
 
             </LinearLayout>

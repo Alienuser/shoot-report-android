@@ -10,6 +10,8 @@ import java.util.*
 
 object HelperShare {
 
+    private val charset = Charsets.ISO_8859_1
+
     fun shareTraining(
         training: EntryTraining,
         rifleName: String?,
@@ -21,51 +23,57 @@ object HelperShare {
         val shareFile = createFile(sharePath)
 
         // Header
+        shareFile.appendText("${context.getString(R.string.activityDetails_InputWeapon)};", charset)
         shareFile.appendText(
-            "${context.getString(R.string.activityDetails_InputWeapon)}; " +
-                    "${context.getString(R.string.activityDetails_InputIndicator)}; " +
-                    "${context.getString(R.string.activityDetails_InputKind)}; " +
-                    "${context.getString(R.string.activityDetails_InputPlace)}; " +
-                    "${context.getString(R.string.activityDetails_InputDate)}; " +
-                    "${context.getString(R.string.activityDetails_InputCount)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints1)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints2)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints3)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints4)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints5)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints6)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints7)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints8)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints9)}; " +
-                    "${context.getString(R.string.activityDetails_Points)}; " +
-                    "${context.getString(R.string.activityDetails_AverageDescription)}; " +
-                    "${context.getString(R.string.activityDetails_InputReport)}",
-            Charsets.ISO_8859_1
+            "${context.getString(R.string.activityDetails_InputIndicator)};",
+            charset
         )
+        shareFile.appendText("${context.getString(R.string.activityDetails_InputKind)};", charset)
+        shareFile.appendText("${context.getString(R.string.activityDetails_InputPlace)};", charset)
+        shareFile.appendText("${context.getString(R.string.activityDetails_InputDate)};", charset)
+        shareFile.appendText("${context.getString(R.string.activityDetails_InputCount)};", charset)
+        for (i in 1..training.shoots.size) {
+            shareFile.appendText(
+                "${
+                    String.format(
+                        context.getString(R.string.activityDetails_InputPoints),
+                        i
+                    )
+                };", charset
+            )
+        }
+        shareFile.appendText("${context.getString(R.string.activityDetails_Points)};", charset)
+        shareFile.appendText(
+            "${context.getString(R.string.activityDetails_AverageDescription)};",
+            charset
+        )
+        shareFile.appendText("${context.getString(R.string.activityDetails_InputReport)};", charset)
         shareFile.appendText("\n")
 
         // Content
+        shareFile.appendText("${rifleName};", charset)
+        shareFile.appendText("${training.indicator};", charset)
+        shareFile.appendText("${training.training};", charset)
+        shareFile.appendText("${training.place};", charset)
         shareFile.appendText(
-            "${rifleName}; " +
-                    "${training.indicator}; " +
-                    "${training.training}; " +
-                    "${training.place}; " +
-                    "${SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN).format(training.date)}; " +
-                    "${training.shootCount}; " +
-                    "${training.shoots[0]}; " +
-                    "${training.shoots[1]}; " +
-                    "${training.shoots[2]}; " +
-                    "${training.shoots[3]}; " +
-                    "${training.shoots[4]}; " +
-                    "${training.shoots[5]}; " +
-                    "${training.shoots[6]}; " +
-                    "${training.shoots[7]}; " +
-                    "${training.shoots[8]}; " +
-                    "${training.shoots.sum()}; " +
-                    "${(training.shoots.sum() / training.shootCount * 100) / 100.0}; " +
-                    "${training.report}",
-            Charsets.ISO_8859_1
+            "${
+                SimpleDateFormat(
+                    "dd.MM.yyyy",
+                    Locale.GERMAN
+                ).format(training.date)
+            };", charset
         )
+        shareFile.appendText("${training.shootCount};", charset)
+        training.shoots.forEach { shoot ->
+            shareFile.appendText("${shoot};", charset)
+        }
+        shareFile.appendText("${training.shoots.sum()};", charset)
+        shareFile.appendText(
+            "${(training.shoots.sum() / training.shootCount * 100) / 100.0};",
+            charset
+        )
+        shareFile.appendText("${training.report};", charset)
+        shareFile.appendText("\n")
 
         return shareFile
     }
@@ -81,39 +89,67 @@ object HelperShare {
         val shareFile = createFile(sharePath)
 
         // Header
+        shareFile.appendText("${context.getString(R.string.activityDetails_InputWeapon)};", charset)
         shareFile.appendText(
-            "${context.getString(R.string.activityDetails_InputWeapon)}; " +
-                    "${context.getString(R.string.activityDetails_CompetitionInputKind)}; " +
-                    "${context.getString(R.string.activityDetails_CompetitionInputPlace)}; " +
-                    "${context.getString(R.string.activityDetails_InputDate)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints1)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints2)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints3)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints4)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints5)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints6)}; " +
-                    "${context.getString(R.string.activityDetails_Points)}; " +
-                    "${context.getString(R.string.activityDetails_CompetitionInputReport)}",
-            Charsets.ISO_8859_1
+            "${context.getString(R.string.activityDetails_CompetitionInputKind)};",
+            charset
+        )
+        shareFile.appendText(
+            "${context.getString(R.string.activityDetails_CompetitionInputPlace)};",
+            charset
+        )
+        shareFile.appendText("${context.getString(R.string.activityDetails_InputDate)};", charset)
+        shareFile.appendText(
+            "${context.getString(R.string.activityDetails_InputPoints1)};",
+            charset
+        )
+        shareFile.appendText(
+            "${context.getString(R.string.activityDetails_InputPoints2)};",
+            charset
+        )
+        shareFile.appendText(
+            "${context.getString(R.string.activityDetails_InputPoints3)};",
+            charset
+        )
+        shareFile.appendText(
+            "${context.getString(R.string.activityDetails_InputPoints4)};",
+            charset
+        )
+        shareFile.appendText(
+            "${context.getString(R.string.activityDetails_InputPoints5)};",
+            charset
+        )
+        shareFile.appendText(
+            "${context.getString(R.string.activityDetails_InputPoints6)};",
+            charset
+        )
+        shareFile.appendText("${context.getString(R.string.activityDetails_Points)};", charset)
+        shareFile.appendText(
+            "${context.getString(R.string.activityDetails_CompetitionInputReport)};",
+            charset
         )
         shareFile.appendText("\n")
 
         // Content
+        shareFile.appendText("${rifleName};", charset)
+        shareFile.appendText("${competition.kind};", charset)
+        shareFile.appendText("${competition.place};", charset)
         shareFile.appendText(
-            "${rifleName}; " +
-                    "${competition.kind}; " +
-                    "${competition.place}; " +
-                    "${SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN).format(competition.date)}; " +
-                    "${competition.shoots[0]}; " +
-                    "${competition.shoots[1]}; " +
-                    "${competition.shoots[2]}; " +
-                    "${competition.shoots[3]}; " +
-                    "${competition.shoots[4]}; " +
-                    "${competition.shoots[5]}; " +
-                    "${competition.shoots.sum()}; " +
-                    "${competition.report}",
-            Charsets.ISO_8859_1
+            "${
+                SimpleDateFormat(
+                    "dd.MM.yyyy",
+                    Locale.GERMAN
+                ).format(competition.date)
+            };", charset
         )
+        shareFile.appendText("${competition.shoots[0]};", charset)
+        shareFile.appendText("${competition.shoots[1]};", charset)
+        shareFile.appendText("${competition.shoots[2]};", charset)
+        shareFile.appendText("${competition.shoots[3]};", charset)
+        shareFile.appendText("${competition.shoots[4]};", charset)
+        shareFile.appendText("${competition.shoots[5]};", charset)
+        shareFile.appendText("${competition.shoots.sum()};", charset)
+        shareFile.appendText("${competition.report};", charset)
         shareFile.appendText("\n")
 
         return shareFile

@@ -34,7 +34,6 @@
                     android:buttonTint="@android:color/holo_red_dark"
                     android:drawableStart="@drawable/ic_mood_bad"
                     android:drawableTint="@android:color/holo_red_dark"
-                    android:enabled="false"
                     app:buttonTint="@android:color/holo_red_dark" />
 
                 <RadioButton
@@ -45,7 +44,6 @@
                     android:buttonTint="@android:color/holo_red_dark"
                     android:drawableStart="@drawable/ic_mood_dissatisfied"
                     android:drawableTint="@android:color/holo_red_dark"
-                    android:enabled="false"
                     app:buttonTint="@android:color/holo_red_dark" />
 
                 <RadioButton
@@ -56,7 +54,6 @@
                     android:buttonTint="@color/colorAccent"
                     android:drawableStart="@drawable/ic_mood_satisfied"
                     android:drawableTint="@color/colorAccent"
-                    android:enabled="false"
                     app:buttonTint="@color/colorAccent" />
 
                 <RadioButton
@@ -67,7 +64,6 @@
                     android:buttonTint="@color/colorAccent"
                     android:drawableStart="@drawable/ic_mood_verysatisfied"
                     android:drawableTint="@color/colorAccent"
-                    android:enabled="false"
                     app:buttonTint="@color/colorAccent" />
 
             </RadioGroup>
@@ -78,7 +74,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:enabled="false"
                 android:hint="@string/activityDetails_InputKind">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -93,7 +88,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:enabled="false"
                 android:hint="@string/activityDetails_InputPlace">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -107,7 +101,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:enabled="false"
                 android:hint="@string/activityDetails_InputDate">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -130,7 +123,6 @@
                     android:layout_marginStart="7dp"
                     android:layout_marginEnd="7dp"
                     android:layout_weight="1"
-                    android:enabled="false"
                     android:text="@string/activityDetails_ButtonPhoto" />
 
                 <Button
@@ -141,7 +133,6 @@
                     android:layout_marginStart="7dp"
                     android:layout_marginEnd="7dp"
                     android:layout_weight="1"
-                    android:enabled="false"
                     android:text="@string/activityDetails_ButtonQR" />
 
             </LinearLayout>
@@ -151,7 +142,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:enabled="false"
                 android:hint="@string/activityDetails_InputCount">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -164,206 +154,14 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/activityDetails_FlexLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/activityDetails_InputPoints1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:hint="@string/activityDetails_InputPoints1">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:nextFocusDown="@id/activityDetails_EditInputPoints2"
-                        android:selectAllOnFocus="true"
-                        android:text="@string/fragmentTraining_SeriesDefault" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/activityDetails_InputPoints2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:hint="@string/activityDetails_InputPoints2">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/activityDetails_EditInputPoints2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:nextFocusDown="@id/activityDetails_EditInputPoints3"
-                        android:selectAllOnFocus="true"
-                        android:text="@string/fragmentTraining_SeriesDefault" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/activityDetails_InputPoints3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:hint="@string/activityDetails_InputPoints3">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/activityDetails_EditInputPoints3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:nextFocusDown="@id/activityDetails_EditInputPoints4"
-                        android:selectAllOnFocus="true"
-                        android:text="@string/fragmentTraining_SeriesDefault" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/activityDetails_InputPoints4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:hint="@string/activityDetails_InputPoints4">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/activityDetails_EditInputPoints4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:nextFocusDown="@id/activityDetails_EditInputPoints5"
-                        android:selectAllOnFocus="true"
-                        android:text="@string/fragmentTraining_SeriesDefault" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/activityDetails_InputPoints5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:hint="@string/activityDetails_InputPoints5">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/activityDetails_EditInputPoints5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:nextFocusDown="@id/activityDetails_EditInputPoints6"
-                        android:selectAllOnFocus="true"
-                        android:text="@string/fragmentTraining_SeriesDefault" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/activityDetails_InputPoints6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:hint="@string/activityDetails_InputPoints6">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/activityDetails_EditInputPoints6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:nextFocusDown="@id/activityDetails_EditInputPoints7"
-                        android:selectAllOnFocus="true"
-                        android:text="@string/fragmentTraining_SeriesDefault" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/activityDetails_InputPoints7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:hint="@string/activityDetails_InputPoints7">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/activityDetails_EditInputPoints7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:nextFocusDown="@id/activityDetails_EditInputPoints8"
-                        android:selectAllOnFocus="true"
-                        android:text="@string/fragmentTraining_SeriesDefault" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/activityDetails_InputPoints8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:hint="@string/activityDetails_InputPoints8">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/activityDetails_EditInputPoints8"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:selectAllOnFocus="true"
-                        android:text="@string/fragmentTraining_SeriesDefault" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/activityDetails_InputPoints9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:enabled="false"
-                    android:hint="@string/activityDetails_InputPoints9">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/activityDetails_EditInputPoints9"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:selectAllOnFocus="true"
-                        android:text="@string/fragmentTraining_SeriesDefault" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
+                android:layout_marginBottom="8dp"
+                app:flexDirection="row"
+                app:flexWrap="wrap"
+                app:justifyContent="space_evenly" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -451,7 +249,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:enabled="false"
                 android:hint="@string/activityDetails_InputReport">
 
                 <EditText
@@ -490,7 +287,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
                     android:layout_weight="1"
-                    android:enabled="false"
                     android:text="@string/activityDetails_ButtonSave" />
 
             </LinearLayout>

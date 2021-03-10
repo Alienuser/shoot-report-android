@@ -48,4 +48,18 @@
         android:title="@string/topMenuPartner"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/topMenuSocialFacebook"
+        android:actionLayout="@layout/toolbar"
+        android:orderInCategory="800"
+        android:title="@string/topMenuFacebook"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/topMenuSocialInstagram"
+        android:actionLayout="@layout/toolbar"
+        android:orderInCategory="900"
+        android:title="@string/topMenuInstagram"
+        app:showAsAction="never" />
+
 </menu>

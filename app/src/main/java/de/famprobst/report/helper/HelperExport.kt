@@ -31,9 +31,6 @@ object HelperExport {
                     "${context.getString(R.string.activityDetails_InputPoints4)}; " +
                     "${context.getString(R.string.activityDetails_InputPoints5)}; " +
                     "${context.getString(R.string.activityDetails_InputPoints6)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints7)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints8)}; " +
-                    "${context.getString(R.string.activityDetails_InputPoints9)}; " +
                     "${context.getString(R.string.activityDetails_Points)}; " +
                     "${context.getString(R.string.activityDetails_AverageDescription)}; " +
                     "${context.getString(R.string.activityDetails_InputReport)}",
