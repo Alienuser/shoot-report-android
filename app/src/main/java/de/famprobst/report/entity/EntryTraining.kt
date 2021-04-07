@@ -16,7 +16,7 @@ data class EntryTraining(
     @ColumnInfo(name = "shoot_count") var shootCount: Int,
     @TypeConverters(HelperConverter::class) @ColumnInfo(name = "shoots") var shoots: List<Double>,
     @ColumnInfo(name = "indicator") var indicator: Int,
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB) var image: ByteArray,
+    @ColumnInfo(name = "image") var image: String,
     @ColumnInfo(name = "report") var report: String,
     @ColumnInfo(name = "rifleId") var rifleId: Int
 ) {

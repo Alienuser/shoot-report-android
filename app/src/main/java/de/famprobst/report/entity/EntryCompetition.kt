@@ -14,7 +14,7 @@ data class EntryCompetition(
     @ColumnInfo(name = "place") var place: String,
     @ColumnInfo(name = "kind") var kind: String,
     @TypeConverters(HelperConverter::class) @ColumnInfo(name = "shoots") var shoots: List<Double>,
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB) var image: ByteArray,
+    @ColumnInfo(name = "image") var image: String,
     @ColumnInfo(name = "report") var report: String,
     @ColumnInfo(name = "rifleId") var rifleId: Int
 ) {

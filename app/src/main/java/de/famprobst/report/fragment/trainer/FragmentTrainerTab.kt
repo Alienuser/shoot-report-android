@@ -41,8 +41,16 @@ class FragmentTrainerTab(private val tabNumber: Int) : Fragment() {
     }
 
     private fun displayContent() {
-        // Get the right language
-        val locale: String = Locale.getDefault().language
+        // Set array for all language we are supporting
+        val validLocales = arrayOf("de", "en")
+
+        // Get the locale from the user
+        var locale: String = Locale.getDefault().language
+
+        // Check if we can use the users language
+        if (!validLocales.contains(locale)) {
+            locale = "en"
+        }
 
         // Get the right content
         val content = when (tabNumber) {

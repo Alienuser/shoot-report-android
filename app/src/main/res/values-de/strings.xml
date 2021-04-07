@@ -16,6 +16,8 @@
     <string name="topMenuData">Stammdaten</string>
     <string name="topMenuInfo">Informationen</string>
     <string name="topMenuPartner">Partner</string>
+    <string name="topMenuFacebook">Facebook</string>
+    <string name="topMenuInstagram">Instagram</string>
 
     <!-- Menu top -->
     <string name="detailMenuEdit">Editieren</string>
@@ -57,23 +59,22 @@
     <string name="activityDetails_InputDate">Datum</string>
     <string name="activityDetails_InputReport">Trainingsbericht</string>
     <string name="activityDetails_CompetitionInputReport">Wettkampfbericht</string>
+    <string name="activityDetails_InputPoints">Serie %s</string>
     <string name="activityDetails_InputPoints1">Serie 1</string>
     <string name="activityDetails_InputPoints2">Serie 2</string>
     <string name="activityDetails_InputPoints3">Serie 3</string>
     <string name="activityDetails_InputPoints4">Serie 4</string>
     <string name="activityDetails_InputPoints5">Serie 5</string>
     <string name="activityDetails_InputPoints6">Serie 6</string>
-    <string name="activityDetails_InputPoints7">Serie 7</string>
-    <string name="activityDetails_InputPoints8">Serie 8</string>
-    <string name="activityDetails_InputPoints9">Serie 9</string>
     <string name="activityDetails_Points">Gesamtringzahl:</string>
     <string name="activityDetails_AverageDescription">Durchschnitt:</string>
     <string name="activityDetails_Average">%1$s</string>
-    <string name="activityDetails_ButtonShare">Share</string>
-    <string name="activityDetails_ShareTitle">Sharen</string>
+    <string name="activityDetails_ButtonShare">Teilen</string>
+    <string name="activityDetails_ShareTitle">Teilen</string>
     <string name="activityDetails_ShareError">Du musst den Eintrag erst speichern.</string>
     <string name="activityDetails_ButtonPhoto">Foto</string>
     <string name="activityDetails_ButtonQR">QR-Code</string>
+    <string name="activityDetails_ImageError">Bild konnte nicht geladen werden.</string>
     <string name="activityDetails_InputCount">Anzahl Schüsse</string>
     <string name="activityDetails_ButtonSave">Speichern</string>
     <string name="activityDetails_InfoQR">Hier kannst du in Zukunft dein Ergebnis über QR-Code scannen.</string>

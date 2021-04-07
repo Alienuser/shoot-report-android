@@ -3,6 +3,7 @@ package de.famprobst.report.activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -25,10 +26,11 @@ import de.famprobst.report.model.ModelCompetition
 import de.famprobst.report.model.ModelTraining
 import java.io.File
 
-
 class ActivityMain : AppCompatActivity() {
 
     private var prevMenuItem: MenuItem? = null
+    private var facebookLink = "https://www.facebook.com/shoot.report"
+    private var instagramLink = "https://www.instagram.com/shoot.report/"
     private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -106,6 +108,18 @@ class ActivityMain : AppCompatActivity() {
             }
             R.id.topMenuPartner -> {
                 startActivity(Intent(this, ActivityPartner::class.java))
+                true
+            }
+            R.id.topMenuSocialFacebook -> {
+                startActivity(
+                    Intent(Intent.ACTION_VIEW, Uri.parse(facebookLink))
+                )
+                true
+            }
+            R.id.topMenuSocialInstagram -> {
+                startActivity(
+                    Intent(Intent.ACTION_VIEW, Uri.parse(instagramLink))
+                )
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -223,9 +237,9 @@ class ActivityMain : AppCompatActivity() {
         val fileURI = FileProvider.getUriForFile(this, "de.famprobst.report", exportFile)
         val sharingIntent = Intent()
         sharingIntent.action = Intent.ACTION_SEND
-        sharingIntent.type = "text/csv";
+        sharingIntent.type = "text/csv"
         sharingIntent.putExtra(Intent.EXTRA_STREAM, fileURI)
-        sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         startActivity(sharingIntent)
     }
 }
