@@ -13,6 +13,7 @@ data class EntryCompetition(
     @TypeConverters(HelperConverter::class) @ColumnInfo(name = "date") var date: Date,
     @ColumnInfo(name = "place") var place: String,
     @ColumnInfo(name = "kind") var kind: String,
+    @ColumnInfo(name = "shoot_count") var shootCount: Int,
     @TypeConverters(HelperConverter::class) @ColumnInfo(name = "shoots") var shoots: List<Double>,
     @ColumnInfo(name = "image") var image: String,
     @ColumnInfo(name = "report") var report: String,

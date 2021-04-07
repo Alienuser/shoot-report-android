@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import de.famprobst.report.R
-import de.famprobst.report.activity.ActivityDetailsCompetition
+import de.famprobst.report.activity.ActivityDetails
 import de.famprobst.report.adapter.AdapterCompetition
 import de.famprobst.report.entity.EntryCompetition
 import de.famprobst.report.model.ModelCompetition
@@ -111,15 +111,16 @@ class FragmentCompetitionList : Fragment() {
         }
     }
 
-    private fun addCompetition() {
-        val intent = Intent(this.context, ActivityDetailsCompetition::class.java)
+    private fun openCompetition(competition: EntryCompetition) {
+        val intent = Intent(this.context, ActivityDetails::class.java)
+        intent.putExtra("competitionId", competition.id)
         intent.putExtra("kind", "competition")
         startActivity(intent)
     }
 
-    private fun openCompetition(competition: EntryCompetition) {
-        val intent = Intent(this.context, ActivityDetailsCompetition::class.java)
-        intent.putExtra("competitionId", competition.id)
+    private fun addCompetition() {
+        val intent = Intent(this.context, ActivityDetails::class.java)
+        intent.putExtra("kind", "competition")
         startActivity(intent)
     }
 }

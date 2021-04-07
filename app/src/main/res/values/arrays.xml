@@ -5,10 +5,15 @@
         <item>Air Rifle</item>
         <item>Air Rifle 3-position</item>
         <item>Light Rifle</item>
-        <item>Small Bore Rifle</item>
+        <item>Small Bore Rifle standing</item>
         <item>Small Bore Rifle 3-position</item>
         <item>Air Pistol</item>
         <item>Light Pistol</item>
+        <item>Air Rifle on a rest</item>
+        <item>Small Bore Rifle prone</item>
+        <item>Small Bore Rifle on a rest</item>
+        <item>Air Pistol on a rest</item>
+        <item>Crossbow</item>
     </string-array>
 
     <string-array name="activityDetails_InputKindPossibilities">

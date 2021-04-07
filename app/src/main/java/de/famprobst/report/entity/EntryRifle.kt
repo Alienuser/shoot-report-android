@@ -9,5 +9,6 @@ data class EntryRifle(
 
     @PrimaryKey(autoGenerate = true) var id: Int,
     @ColumnInfo(name = "prefFile") var prefFile: String,
-    @ColumnInfo(name = "show", defaultValue = "true") var show: Boolean
+    @ColumnInfo(name = "show", defaultValue = "true") var show: Boolean,
+    @ColumnInfo(name = "order") var order: Int
 )

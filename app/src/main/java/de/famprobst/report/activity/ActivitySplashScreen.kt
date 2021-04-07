@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class ActivitySplashScreen : AppCompatActivity() {
 
-    private val splashTimeOut: Long = 4000
+    private val splashTimeOut: Long = 3000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

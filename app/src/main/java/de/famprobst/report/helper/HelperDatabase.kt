@@ -14,7 +14,7 @@ import de.famprobst.report.entity.EntryTraining
 
 @Database(
     entities = [EntryRifle::class, EntryTraining::class, EntryCompetition::class],
-    version = 2,
+    version = 4,
     exportSchema = true
 )
 @TypeConverters(HelperConverter::class)
@@ -37,7 +37,11 @@ abstract class HelperDatabase : RoomDatabase() {
                     "report.db"
                 )
                     .createFromAsset("database/report.db")
-                    .addMigrations(HelperDatabaseMigration.MIGRATION_1_2)
+                    .addMigrations(
+                        HelperDatabaseMigration.MIGRATION_1_2,
+                        HelperDatabaseMigration.MIGRATION_2_3,
+                        HelperDatabaseMigration.MIGRATION_3_4
+                    )
                     .build()
                 INSTANCE = instance
                 instance

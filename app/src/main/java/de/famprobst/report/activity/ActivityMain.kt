@@ -110,6 +110,10 @@ class ActivityMain : AppCompatActivity() {
                 startActivity(Intent(this, ActivityPartner::class.java))
                 true
             }
+            R.id.topMenuCooperation -> {
+                startActivity(Intent(this, ActivityCooperation::class.java))
+                true
+            }
             R.id.topMenuSocialFacebook -> {
                 startActivity(
                     Intent(Intent.ACTION_VIEW, Uri.parse(facebookLink))
@@ -185,52 +189,36 @@ class ActivityMain : AppCompatActivity() {
         // Get the competition model
         val competitionModel = ViewModelProvider(this).get(ModelCompetition::class.java)
 
-        // Create the file
-        var exportFile = File(getExternalFilesDir(null), "exportCompetition.csv")
-        exportFile.delete()
-        exportFile.createNewFile()
-
-        // Get all trainings
-        exportFile = HelperExport.getCompetition(
-            this,
-            exportFile,
-            competitionModel.allCompetitions(
-                sharedPref.getInt(
-                    getString(R.string.preferenceReportRifleId),
-                    0
-                )
-            ).value,
-            sharedPref.getString(getString(R.string.preferenceReportRifleName), ""),
+        // Set the content
+        val exportPath = getExternalFilesDir(null)
+        val exportFile = HelperExport.exportCompetition(
+            competitionModel,
+            this.sharedPref.getString(getString(R.string.preferenceReportRifleName), ""),
+            this.sharedPref.getInt(getString(R.string.preferenceReportRifleId), 0),
+            exportPath,
+            baseContext
         )
 
-        // Open the share overlay
-        exportCSVFile(exportFile)
+        // Share the file
+        this.exportCSVFile(exportFile)
     }
 
     private fun exportTrainingToCSV() {
-        // Get the training model
+        // Get the competition model
         val trainingModel = ViewModelProvider(this).get(ModelTraining::class.java)
 
-        // Create the file
-        var exportFile = File(getExternalFilesDir(null), "exportTraining.csv")
-        exportFile.delete()
-        exportFile.createNewFile()
-
-        // Get all trainings
-        exportFile = HelperExport.getTraining(
-            this,
-            exportFile,
-            trainingModel.allTrainings(
-                sharedPref.getInt(
-                    getString(R.string.preferenceReportRifleId),
-                    0
-                )
-            ).value,
-            sharedPref.getString(getString(R.string.preferenceReportRifleName), ""),
+        // Set the content
+        val exportPath = getExternalFilesDir(null)
+        val exportFile = HelperExport.exportTraining(
+            trainingModel,
+            this.sharedPref.getString(getString(R.string.preferenceReportRifleName), ""),
+            this.sharedPref.getInt(getString(R.string.preferenceReportRifleId), 0),
+            exportPath,
+            baseContext
         )
 
-        // Open the share overlay
-        exportCSVFile(exportFile)
+        // Share the file
+        this.exportCSVFile(exportFile)
     }
 
     private fun exportCSVFile(exportFile: File) {

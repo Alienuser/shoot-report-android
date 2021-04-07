@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="de.famprobst.report">
 
     <!-- Features -->
@@ -13,15 +14,19 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/general_Name"
         android:resizeableActivity="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsPictureInPicture="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
 
         <!-- Provider -->
         <provider
@@ -36,6 +41,7 @@
 
         <activity
             android:name=".activity.ActivitySplashScreen"
+            android:exported="true"
             android:theme="@style/AppTheme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,14 +63,7 @@
             android:parentActivityName=".activity.ActivityRifle" />
 
         <activity
-            android:name=".activity.ActivityDetailsTraining"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/general_Name"
-            android:parentActivityName=".activity.ActivityMain"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-
-        <activity
-            android:name=".activity.ActivityDetailsCompetition"
+            android:name=".activity.ActivityDetails"
             android:configChanges="orientation|screenSize"
             android:label="@string/general_Name"
             android:parentActivityName=".activity.ActivityMain"
@@ -91,6 +90,12 @@
 
         <activity
             android:name=".activity.ActivityPartner"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/general_Name"
+            android:parentActivityName=".activity.ActivityMain" />
+
+        <activity
+            android:name=".activity.ActivityCooperation"
             android:configChanges="orientation|screenSize"
             android:label="@string/general_Name"
             android:parentActivityName=".activity.ActivityMain" />

@@ -71,7 +71,7 @@ class FragmentCompetitionStatistics : Fragment() {
             var i = 0
 
             while (chartCategoriesComplete.size < 10 && competitions.isNotEmpty() && i < competitions.size) {
-                if (competitions[i].shoots.sum().rem(1).equals(0.0)) {
+                if (competitions[i].shoots.isNotEmpty() && competitions[i].shoots.all { it % 1.0 == 0.0 }) {
                     // Calculate the right points
                     chartSeriesComplete += competitions[i].shoots.sum()
 
@@ -89,7 +89,7 @@ class FragmentCompetitionStatistics : Fragment() {
             i = 0
 
             while (chartCategoriesHalf.size < 10 && competitions.isNotEmpty() && i < competitions.size) {
-                if (!competitions[i].shoots.sum().rem(1).equals(0.0)) {
+                if (competitions[i].shoots.isNotEmpty() && competitions[i].shoots.any { it % 1.0 != 0.0 }) {
                     // Calculate the right points
                     chartSeriesHalf += floor(competitions[i].shoots.sum() * 100) / 100.0
 

@@ -16,12 +16,14 @@
     <string name="navigationGoals">Goals</string>
 
     <!-- Menu top -->
+    <string name="topMenuReload">Reload</string>
     <string name="topMenuTrainer">Coach</string>
     <string name="topMenuExportTraining">Export training</string>
     <string name="topMenuExportCompetition">Export competition</string>
     <string name="topMenuData">Master data</string>
     <string name="topMenuInfo">Information</string>
     <string name="topMenuPartner">Partner</string>
+    <string name="topMenuCooperation">Cooperation</string>
     <string name="topMenuFacebook">Facebook</string>
     <string name="topMenuInstagram">Instagram</string>
 
@@ -51,13 +53,19 @@
     <string name="activityPartner_Info">Become a partner of us now.</string>
     <string name="activityPartner_Button">Contact</string>
 
+    <!-- Activity Cooperation -->
+    <string name="activityCooperation_Title">Cooperation</string>
+    <string name="activityCooperation_Headline">We say THANK YOU!</string>
+    <string name="activityCooperation_Info">Cooperate with us now.</string>
+    <string name="activityCooperation_Button">Contact</string>
+
     <!-- Activity Details -->
     <string name="activityDetails_AddTraining">Add training</string>
     <string name="activityDetails_AddCompetition">Add competition</string>
     <string name="activityDetails_EditTraining">Edit training</string>
     <string name="activityDetails_EditCompetition">Edit competition</string>
     <string name="activityDetails_InputWeapon">Weapon</string>
-    <string name="activityDetails_InputIndicator">Indicator</string>
+    <string name="activityDetails_InputIndicator">Rating</string>
     <string name="activityDetails_CompetitionInputPlace">Where was your competition?</string>
     <string name="activityDetails_CompetitionInputKind">Which mode did you shoot?</string>
     <string name="activityDetails_InputKind">What did you train?</string>
@@ -66,12 +74,6 @@
     <string name="activityDetails_InputReport">Training report</string>
     <string name="activityDetails_CompetitionInputReport">Competition report</string>
     <string name="activityDetails_InputPoints">Series %s</string>
-    <string name="activityDetails_InputPoints1">Series 1</string>
-    <string name="activityDetails_InputPoints2">Series 2</string>
-    <string name="activityDetails_InputPoints3">Series 3</string>
-    <string name="activityDetails_InputPoints4">Series 4</string>
-    <string name="activityDetails_InputPoints5">Series 5</string>
-    <string name="activityDetails_InputPoints6">Series 6</string>
     <string name="activityDetails_Points">Total rings:</string>
     <string name="activityDetails_AverageDescription">Average:</string>
     <string name="activityDetails_Average">%1$s</string>
@@ -80,10 +82,10 @@
     <string name="activityDetails_ShareError">You have to first save the entry.</string>
     <string name="activityDetails_ButtonPhoto">Photo</string>
     <string name="activityDetails_ButtonQR">QR code</string>
+    <string name="activityDetails_InfoQR">Here you can scan your result via QR code in the future.</string>
     <string name="activityDetails_ImageError">Image could not be loaded.</string>
     <string name="activityDetails_InputCount">Number of shots</string>
     <string name="activityDetails_ButtonSave">Save</string>
-    <string name="activityDetails_InfoQR">Here you can scan your result via QR code in the future.</string>
     <string name="activityDetails_ChooseImageLocation">How do you want to take the photo?</string>
     <string name="activityDetails_SaveSuccess">Successfully saved.</string>
     <string name="activityDetails_DeleteMessage">Sure to delete the picture?</string>
@@ -184,9 +186,9 @@
     <string name="fragmentInformation_WebsiteValue" translatable="false">www.burkhardt-sport.solutions</string>
     <string name="fragmentInformation_TitleVersion">Information about the version</string>
     <string name="fragmentInformation_VersionTitle">Version</string>
-    <string name="fragmentInformation_VersionValue" translatable="false">1.3 Release</string>
+    <string name="fragmentInformation_VersionValue" translatable="false">1.4 Release</string>
     <string name="fragmentInformation_BuildTitle" translatable="false">Build</string>
-    <string name="fragmentInformation_BuildValue" translatable="false">20210406</string>
+    <string name="fragmentInformation_BuildValue" translatable="false">20210903</string>
     <string name="fragmentInformation_TitleSource">Sources</string>
     <string name="fragmentInformation_SourceTitle">Texts of the trainer function are in accordance with the Trainer-C mass sports training of the \"Deustchen Schützenbundes\".</string>
 

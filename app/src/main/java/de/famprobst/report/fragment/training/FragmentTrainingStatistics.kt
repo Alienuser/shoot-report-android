@@ -71,7 +71,7 @@ class FragmentTrainingStatistics : Fragment() {
             var i = 0
 
             while (chartCategoriesComplete.size < 10 && trainings.isNotEmpty() && i < trainings.size) {
-                if (trainings[i].shoots.sum().rem(1).equals(0.0)) {
+                if (trainings[i].shoots.isNotEmpty() && trainings[i].shoots.all { it % 1.0 == 0.0 }) {
                     // Calculate the right points
                     if (trainings[i].shootCount == 0) {
                         chartSeriesComplete += 0
@@ -93,7 +93,7 @@ class FragmentTrainingStatistics : Fragment() {
             i = 0
 
             while (chartCategoriesHalf.size < 10 && trainings.isNotEmpty() && i < trainings.size) {
-                if (!trainings[i].shoots.sum().rem(1).equals(0.0)) {
+                if (trainings[i].shoots.isNotEmpty() && trainings[i].shoots.any { it % 1.0 != 0.0 }) {
                     // Check if we divide by 0
                     if (trainings[i].shootCount == 0) {
                         chartSeriesHalf += 0

@@ -3,7 +3,6 @@
     <external-files-path
         name="export"
         path="/" />
-    path="share/" />
 
     <external-files-path
         name="images"
