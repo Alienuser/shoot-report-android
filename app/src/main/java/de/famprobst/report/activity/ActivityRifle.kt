@@ -2,12 +2,13 @@ package de.famprobst.report.activity
 
 import android.Manifest
 import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -38,7 +39,7 @@ class ActivityRifle : AppCompatActivity() {
         // Get shared prefs
         sharedPref = this.getSharedPreferences(
             getString(R.string.preferenceFile_report),
-            Context.MODE_PRIVATE
+            MODE_PRIVATE
         )
 
         // Setup list view
@@ -60,6 +61,31 @@ class ActivityRifle : AppCompatActivity() {
 
         // Stop changing ad
         HelperRepeat.stopRepeat()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_rifle, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.menu_reload -> {
+                this.showAllRifles()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showAllRifles() {
+        // Show all rifles
+        rifleModel.allRifles.value?.forEach { rifle ->
+            rifle.show = true
+            rifleModel.update(rifle)
+        }
     }
 
     private fun setupListView() {
@@ -102,7 +128,7 @@ class ActivityRifle : AppCompatActivity() {
         // Setup model and listener
         rifleModel = ViewModelProvider(this).get(ModelRifle::class.java)
         rifleModel.allRifles.observe(this, { rifles ->
-            recyclerAdapter.addRifle(rifles)
+            recyclerAdapter.addRifle(rifles.filter { it.show })
         })
     }
 

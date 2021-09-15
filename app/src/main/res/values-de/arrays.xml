@@ -5,10 +5,15 @@
         <item>Luftgewehr</item>
         <item>Luftgewehr 3-Stellung</item>
         <item>Lichtgewehr</item>
-        <item>Kleinkalibergewehr</item>
+        <item>Kleinkalibergewehr stehend</item>
         <item>Kleinkalibergewehr 3-Stellung</item>
         <item>Luftpistole</item>
         <item>Lichtpistole</item>
+        <item>Luftgewehr aufgelegt</item>
+        <item>Kleinkalibergewehr liegend</item>
+        <item>Kleinkalibergewehr aufgelegt</item>
+        <item>Luftpistole aufgelegt</item>
+        <item>Armbrust</item>
     </string-array>
 
     <string-array name="activityDetails_InputKindPossibilities">

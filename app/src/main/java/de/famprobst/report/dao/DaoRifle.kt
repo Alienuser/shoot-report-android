@@ -7,7 +7,7 @@ import de.famprobst.report.entity.EntryRifle
 @Dao
 interface DaoRifle {
 
-    @Query("SELECT * from rifle_table WHERE show = 'true' ORDER BY id")
+    @Query("SELECT * from rifle_table ORDER BY `order`")
     fun getAll(): LiveData<List<EntryRifle>>
 
     @Query("SELECT * from rifle_table WHERE id = :id")

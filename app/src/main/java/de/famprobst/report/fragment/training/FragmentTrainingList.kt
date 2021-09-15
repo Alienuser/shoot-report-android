@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import de.famprobst.report.R
-import de.famprobst.report.activity.ActivityDetailsTraining
+import de.famprobst.report.activity.ActivityDetails
 import de.famprobst.report.adapter.AdapterTraining
 import de.famprobst.report.entity.EntryTraining
 import de.famprobst.report.model.ModelTraining
@@ -103,12 +103,6 @@ class FragmentTrainingList : Fragment() {
         })
     }
 
-    private fun openTraining(training: EntryTraining) {
-        val intent = Intent(this.context, ActivityDetailsTraining::class.java)
-        intent.putExtra("trainingId", training.id)
-        startActivity(intent)
-    }
-
     private fun setupFab(layout: View) {
         val fab = layout.findViewById<FloatingActionButton>(R.id.fragmentTraining_Fab)
 
@@ -117,8 +111,15 @@ class FragmentTrainingList : Fragment() {
         }
     }
 
+    private fun openTraining(training: EntryTraining) {
+        val intent = Intent(this.context, ActivityDetails::class.java)
+        intent.putExtra("trainingId", training.id)
+        intent.putExtra("kind", "training")
+        startActivity(intent)
+    }
+
     private fun addTraining() {
-        val intent = Intent(this.context, ActivityDetailsTraining::class.java)
+        val intent = Intent(this.context, ActivityDetails::class.java)
         intent.putExtra("kind", "training")
         startActivity(intent)
     }

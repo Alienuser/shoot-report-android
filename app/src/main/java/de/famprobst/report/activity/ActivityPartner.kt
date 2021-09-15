@@ -16,7 +16,6 @@ class ActivityPartner : AppCompatActivity() {
     private lateinit var imageAd3: ImageView
     private lateinit var imageAd4: ImageView
     private lateinit var imageAd5: ImageView
-    private lateinit var imageAd6: ImageView
     private lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +40,6 @@ class ActivityPartner : AppCompatActivity() {
         imageAd3 = findViewById(R.id.activityPartner_Image3)
         imageAd4 = findViewById(R.id.activityPartner_Image4)
         imageAd5 = findViewById(R.id.activityPartner_Image5)
-        imageAd6 = findViewById(R.id.activityPartner_Image6)
         button = findViewById(R.id.activityPartner_Button)
 
         // Set all links
@@ -87,11 +85,6 @@ class ActivityPartner : AppCompatActivity() {
                     Uri.parse("https://tec-hro.de/schiesssport/de")
                 )
             )
-        }
-
-        // KKSV
-        imageAd6.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.kksvillingen.de/")))
         }
 
         // Contact

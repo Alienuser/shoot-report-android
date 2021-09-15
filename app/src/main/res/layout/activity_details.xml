@@ -148,7 +148,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:nextFocusDown="@id/activityDetails_InputPoints1"
                     android:selectAllOnFocus="true"
                     android:text="@string/fragmentTraining_SeriesDefault" />
 
@@ -190,6 +189,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/activityDetails_AverageBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -226,21 +226,37 @@
                     android:id="@+id/activityDetails_Photo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerCrop" />
+                    android:adjustViewBounds="true" />
 
-                <ImageView
-                    android:id="@+id/activityDetails_DeletePhoto"
+                <LinearLayout
+                    android:id="@+id/activityDetails_DeleteRotate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_weight="2"
-                    android:alpha="0.5"
-                    android:clickable="false"
-                    android:src="@drawable/ic_delete"
-                    android:visibility="gone" />
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/activityDetails_DeletePhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        android:alpha="0.5"
+                        android:clickable="false"
+                        android:src="@drawable/ic_delete" />
+
+                    <ImageView
+                        android:id="@+id/activityDetails_RotatePhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.5"
+                        android:clickable="false"
+                        android:src="@drawable/ic_rotate"
+                        android:visibility="gone" />
+
+                </LinearLayout>
 
             </LinearLayout>
 

@@ -1,17 +1,20 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.firebase-perf'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion '30.0.3'
+    compileSdkVersion 31
+    buildToolsVersion '31.0.0'
 
     defaultConfig {
         applicationId "de.famprobst.report"
         minSdkVersion 19
-        targetSdkVersion 30
-        versionCode 6
-        versionName '1.3'
+        targetSdkVersion 31
+        versionCode 7
+        versionName '1.4'
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         kapt {
             arguments {
@@ -32,6 +35,8 @@ android {
     }
 
     repositories {
+        google()
+        mavenCentral()
         maven { url 'https://www.jitpack.io' }
     }
 
@@ -40,8 +45,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
@@ -51,45 +56,55 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
 
     // AndroidX
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
     implementation 'androidx.viewpager:viewpager:1.0.0'
     implementation 'androidx.preference:preference-ktx:1.1.1'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.recyclerview:recyclerview-selection:1.1.0'
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation "androidx.exifinterface:exifinterface:1.3.2"
-    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    implementation 'androidx.exifinterface:exifinterface:1.3.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // Material Design
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'com.google.android.material:material:1.4.0'
 
     // Gson
     implementation 'com.google.code.gson:gson:2.8.6'
 
     // Room
-    implementation 'androidx.room:room-runtime:2.2.6'
-    kapt 'androidx.room:room-compiler:2.2.6'
+    implementation 'androidx.room:room-runtime:2.3.0'
+    kapt 'androidx.room:room-compiler:2.3.0'
 
     // Line Chart
     implementation 'com.github.AAChartModel:AAChartCore-Kotlin:-SNAPSHOT'
 
     // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
 
     // FlexBox
-    implementation 'com.google.android:flexbox:2.0.1'
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
+    // QR-Code
+    implementation('com.journeyapps:zxing-android-embedded:4.2.0') { transitive = false }
+    implementation 'com.google.zxing:core:3.4.1'
+
+    // Coil
+    implementation("io.coil-kt:coil:1.1.1")
+
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:27.0.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-perf-ktx'
 
     // Test
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }

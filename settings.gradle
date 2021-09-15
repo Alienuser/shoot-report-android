@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "shoot_report"
+rootProject.name = "shoot_report_android"

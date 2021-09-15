@@ -91,19 +91,6 @@
                 android:layout_height="1dp"
                 android:background="@android:color/darker_gray" />
 
-            <ImageView
-                android:id="@+id/activityPartner_Image6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/ic_advertising_6" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

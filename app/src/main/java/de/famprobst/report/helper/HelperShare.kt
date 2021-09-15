@@ -69,8 +69,9 @@ object HelperShare {
         }
         shareFile.appendText("${training.shoots.sum()};", charset)
         shareFile.appendText(
-            "${(training.shoots.sum() / training.shootCount * 100) / 100.0};",
-            charset
+            "%.2f;".format(
+                (training.shoots.sum() / training.shootCount * 100) / 100.0
+            ), this.charset
         )
         shareFile.appendText("${training.report};", charset)
         shareFile.appendText("\n")
@@ -99,31 +100,18 @@ object HelperShare {
             charset
         )
         shareFile.appendText("${context.getString(R.string.activityDetails_InputDate)};", charset)
-        shareFile.appendText(
-            "${context.getString(R.string.activityDetails_InputPoints1)};",
-            charset
-        )
-        shareFile.appendText(
-            "${context.getString(R.string.activityDetails_InputPoints2)};",
-            charset
-        )
-        shareFile.appendText(
-            "${context.getString(R.string.activityDetails_InputPoints3)};",
-            charset
-        )
-        shareFile.appendText(
-            "${context.getString(R.string.activityDetails_InputPoints4)};",
-            charset
-        )
-        shareFile.appendText(
-            "${context.getString(R.string.activityDetails_InputPoints5)};",
-            charset
-        )
-        shareFile.appendText(
-            "${context.getString(R.string.activityDetails_InputPoints6)};",
-            charset
-        )
-        shareFile.appendText("${context.getString(R.string.activityDetails_Points)};", charset)
+        shareFile.appendText("${context.getString(R.string.activityDetails_InputCount)};", charset)
+        for (i in 1..competition.shoots.size) {
+            shareFile.appendText(
+                "${
+                    String.format(
+                        context.getString(R.string.activityDetails_InputPoints),
+                        i
+                    )
+                };", charset
+            )
+        }
+        shareFile.appendText("${context.getString(R.string.activityDetails_Points)};", this.charset)
         shareFile.appendText(
             "${context.getString(R.string.activityDetails_CompetitionInputReport)};",
             charset
@@ -142,12 +130,10 @@ object HelperShare {
                 ).format(competition.date)
             };", charset
         )
-        shareFile.appendText("${competition.shoots[0]};", charset)
-        shareFile.appendText("${competition.shoots[1]};", charset)
-        shareFile.appendText("${competition.shoots[2]};", charset)
-        shareFile.appendText("${competition.shoots[3]};", charset)
-        shareFile.appendText("${competition.shoots[4]};", charset)
-        shareFile.appendText("${competition.shoots[5]};", charset)
+        shareFile.appendText("${competition.shoots.sum()};", charset)
+        competition.shoots.forEach { shoot ->
+            shareFile.appendText("${shoot};", charset)
+        }
         shareFile.appendText("${competition.shoots.sum()};", charset)
         shareFile.appendText("${competition.report};", charset)
         shareFile.appendText("\n")

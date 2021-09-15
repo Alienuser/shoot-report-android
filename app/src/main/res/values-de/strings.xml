@@ -10,12 +10,14 @@
     <string name="navigationGoals">Ziele</string>
 
     <!-- Menu top -->
+    <string name="topMenuReload">Neuladen</string>
     <string name="topMenuTrainer">Trainer</string>
     <string name="topMenuExportTraining">Training Exportieren</string>
     <string name="topMenuExportCompetition">Wettkämpfe exportieren</string>
     <string name="topMenuData">Stammdaten</string>
     <string name="topMenuInfo">Informationen</string>
     <string name="topMenuPartner">Partner</string>
+    <string name="topMenuCooperation">Kooperation</string>
     <string name="topMenuFacebook">Facebook</string>
     <string name="topMenuInstagram">Instagram</string>
 
@@ -45,13 +47,19 @@
     <string name="activityPartner_Info">Werden Sie jetzt Partner von uns.</string>
     <string name="activityPartner_Button">Kontakt</string>
 
+    <!-- Activity Cooperation -->
+    <string name="activityCooperation_Title">Unsere Kooperationen</string>
+    <string name="activityCooperation_Headline">Wir sagen DANKE!</string>
+    <string name="activityCooperation_Info">>Kooperieren Sie jetzt mit uns.</string>
+    <string name="activityCooperation_Button">Kontakt</string>
+
     <!-- Activity Details -->
     <string name="activityDetails_AddTraining">Training hinzufügen</string>
     <string name="activityDetails_AddCompetition">Wettkampf hinzufügen</string>
     <string name="activityDetails_EditTraining">Training bearbeiten</string>
     <string name="activityDetails_EditCompetition">Wettkampf bearbeiten</string>
     <string name="activityDetails_InputWeapon">Waffe</string>
-    <string name="activityDetails_InputIndicator">Indikator</string>
+    <string name="activityDetails_InputIndicator">Bewertung</string>
     <string name="activityDetails_CompetitionInputPlace">Wo war dein Wettkampf?</string>
     <string name="activityDetails_CompetitionInputKind">Welchen Modus hast du geschossen?</string>
     <string name="activityDetails_InputKind">Was hast du trainiert?</string>
@@ -60,12 +68,6 @@
     <string name="activityDetails_InputReport">Trainingsbericht</string>
     <string name="activityDetails_CompetitionInputReport">Wettkampfbericht</string>
     <string name="activityDetails_InputPoints">Serie %s</string>
-    <string name="activityDetails_InputPoints1">Serie 1</string>
-    <string name="activityDetails_InputPoints2">Serie 2</string>
-    <string name="activityDetails_InputPoints3">Serie 3</string>
-    <string name="activityDetails_InputPoints4">Serie 4</string>
-    <string name="activityDetails_InputPoints5">Serie 5</string>
-    <string name="activityDetails_InputPoints6">Serie 6</string>
     <string name="activityDetails_Points">Gesamtringzahl:</string>
     <string name="activityDetails_AverageDescription">Durchschnitt:</string>
     <string name="activityDetails_Average">%1$s</string>
@@ -74,10 +76,10 @@
     <string name="activityDetails_ShareError">Du musst den Eintrag erst speichern.</string>
     <string name="activityDetails_ButtonPhoto">Foto</string>
     <string name="activityDetails_ButtonQR">QR-Code</string>
+    <string name="activityDetails_InfoQR">Hier kannst du in Zukunft dein Ergebnis über QR-Code scannen.</string>
     <string name="activityDetails_ImageError">Bild konnte nicht geladen werden.</string>
     <string name="activityDetails_InputCount">Anzahl Schüsse</string>
     <string name="activityDetails_ButtonSave">Speichern</string>
-    <string name="activityDetails_InfoQR">Hier kannst du in Zukunft dein Ergebnis über QR-Code scannen.</string>
     <string name="activityDetails_ChooseImageLocation">Wie möchtest du das Bild aufnehmen?</string>
     <string name="activityDetails_DeleteMessage">Möchtest du das Bild wirklich löschen?</string>
     <string name="activityDetails_SaveSuccess">Erfolgreich gespeichert.</string>
